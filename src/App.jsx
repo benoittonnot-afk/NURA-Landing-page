@@ -2,45 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight, ChevronDown, Droplet, Wind, Shield, Leaf, Eye, FlaskConical } from 'lucide-react';
 import { blink, trackEvent } from './lib/blink';
 
-// --- STYLES & FONTS ---
-const GlobalStyles = () => (
-  <style>{`
-    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
-    
-    body {
-      font-family: 'Lato', sans-serif;
-      background-color: #fcfbf9;
-      color: #1a1a1a;
-      overflow-x: hidden;
-    }
-    
-    h1, h2, h3, h4, .font-serif {
-      font-family: 'Playfair Display', serif;
-    }
-
-    .fade-up {
-      animation: fadeUp 1s ease-out forwards;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .tracking-widest-ultra {
-      letter-spacing: 0.25em;
-    }
-    
-    html {
-      scroll-behavior: smooth;
-    }
-  `}</style>
-);
-
 // --- COMPOSANTS ---
 
 const Navbar = ({ refs }) => {
@@ -122,21 +83,22 @@ const Hero = ({ onExplore }) => (
         loop
         muted
         playsInline
-        className="w-full h-full object-cover brightness-[0.75]"
+        className="w-full h-full object-cover brightness-[0.7]"
         src="/video_home.mp4"
       >
         Your browser does not support the video tag.
       </video>
-      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-black/30" />
     </div>
 
     {/* Hero Content */}
-    <div className="relative z-10 text-center text-white px-4 fade-up max-w-5xl mx-auto">
-      <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-light tracking-wide mb-6 leading-tight">
-        Performance starts with health.
+    <div className="relative z-10 text-center text-white px-4 fade-up max-w-6xl mx-auto">
+      <h1 className="hero-headline mb-8">
+        Performance starts <br />
+        <span className="italic">with health.</span>
       </h1>
-      <p className="text-xs md:text-sm uppercase tracking-[0.2em] mb-10 opacity-90 font-bold">
-        Natural-tech activewear rooted in the nordic values.
+      <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+        Natural tech activewear designed to support skin health and full performance cycle, inspired by Nordic values
       </p>
       <button 
         onClick={() => {
@@ -157,17 +119,18 @@ const Hero = ({ onExplore }) => (
 );
 
 const PhilosophySection = ({ innerRef }) => (
-  <section ref={innerRef} className="py-24 md:py-40 bg-[#fcfbf9] relative overflow-hidden">
+  <section ref={innerRef} className="py-24 md:py-40 bg-background relative overflow-hidden">
     <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
       
       {/* Text Content - Position Right on Desktop (order-2) */}
       <div className="order-2 md:order-2 space-y-8">
-        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Our Philosophy</span>
-        <h2 className="text-4xl md:text-5xl font-serif leading-tight text-gray-900">
-          Skin care-level attention to what touches your skin.
+        <span className="label-headline text-left block">Our Philosophy</span>
+        <h2 className="section-headline text-left">
+          Skin care-level <br />
+          <span className="italic">attention.</span>
         </h2>
         
-        <div className="space-y-6 text-lg font-light text-gray-600 leading-relaxed">
+        <div className="space-y-6 text-lg font-light text-foreground/70 leading-relaxed">
           <p>
             NURA is a new standard - elevated, intentional activewear where sensorial design meets science, and skin health becomes a performance advantage.
           </p>
@@ -214,10 +177,11 @@ const PhilosophySection = ({ innerRef }) => (
 const ScienceSection = ({ innerRef }) => (
   <section ref={innerRef} className="py-24 md:py-40 bg-white">
     <div className="max-w-7xl mx-auto px-6 md:px-12">
-      <div className="text-center max-w-4xl mx-auto mb-20 space-y-6">
-        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">The Science</span>
-        <h2 className="text-3xl md:text-5xl font-serif text-gray-900 leading-tight">
-          Health-led performance wear designed to support your body from movement to recovery.
+      <div className="text-center max-w-5xl mx-auto mb-20 space-y-6">
+        <span className="label-headline block">The Science</span>
+        <h2 className="section-headline">
+          Health-led performance <br />
+          <span className="italic">from movement to recovery.</span>
         </h2>
       </div>
 
@@ -265,9 +229,10 @@ const StorySection = ({ innerRef }) => (
     
     <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <div className="space-y-8">
-        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Our Story</span>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
-          Born in the Nordics.<br/> Built for wellbeing.
+        <span className="label-headline text-left block">Our Story</span>
+        <h2 className="section-headline text-left">
+          Born in the Nordics. <br />
+          <span className="italic">Built for wellbeing.</span>
         </h2>
         <div className="w-20 h-[1px] bg-white/30 my-6"></div>
         <p className="text-gray-300 font-light leading-relaxed text-lg">
@@ -322,12 +287,13 @@ const CTASection = ({ innerRef }) => {
   };
 
   return (
-    <section ref={innerRef} className="py-24 md:py-32 bg-[#fcfbf9] text-center px-6">
-      <div className="max-w-xl mx-auto space-y-8">
-        <h2 className="text-3xl md:text-4xl font-serif text-gray-900">
-          The next era of wellness starts with what you wear
+    <section ref={innerRef} className="py-24 md:py-32 bg-background text-center px-6">
+      <div className="max-w-3xl mx-auto space-y-8">
+        <h2 className="section-headline">
+          The next era of wellness <br />
+          <span className="italic">starts with what you wear.</span>
         </h2>
-        <p className="text-gray-500 font-light">
+        <p className="text-foreground/60 font-light">
           Be the first to experience NURA
         </p>
         
@@ -355,7 +321,7 @@ const CTASection = ({ innerRef }) => {
           </form>
         )}
         
-        <p className="text-[10px] text-gray-400 uppercase tracking-widest pt-8">
+        <p className="label-headline pt-8">
           POWERED BY NATURE - DESIGNED FOR HEALTH - BACKED BY SCIENCE
         </p>
       </div>
@@ -376,7 +342,7 @@ const Footer = () => (
         NURA
       </div>
       
-      <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+      <div className="flex gap-8 text-xs font-bold uppercase tracking-[0.3em] text-foreground/40">
         <a 
           href="#" 
           className="hover:text-gray-900 transition-colors"
@@ -427,7 +393,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      <GlobalStyles />
       <Navbar refs={refs} />
       <Hero onExplore={() => philosophyRef.current?.scrollIntoView({ behavior: 'smooth' })} />
       <PhilosophySection innerRef={philosophyRef} />
