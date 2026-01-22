@@ -267,10 +267,12 @@ const StorySection = ({ innerRef }) => (
       </div>
 
       {/* Visual Element */}
-      <div className="h-[400px] md:h-[600px] w-full border border-white/10 p-4">
-         <div className="w-full h-full bg-gray-800 overflow-hidden relative">
-             <img src="/Jenny.jpg" alt="Jenni Toft - Founder" className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-1000" />
-         </div>
+      <div className="h-[500px] md:h-[700px] w-full overflow-hidden relative shadow-2xl">
+         <img 
+           src="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2FJenni__8d8d3a59.jpg?alt=media&token=470644f6-e195-40f5-bcc3-aa1ce2167cec" 
+           alt="Jenni Toft - Founder" 
+           className="w-full h-full object-cover opacity-95 hover:scale-105 transition-transform duration-1000" 
+         />
       </div>
     </div>
   </section>
