@@ -5,11 +5,13 @@
 @tailwind utilities;
 
 :root {
-  --background: 40 20% 98%;
+  --background: 33 31% 96%; /* Milkyway Frost #F9F5F0 */
   --foreground: 0 0% 10%;
   
-  --primary: 0 0% 100%;
-  --primary-foreground: 0 0% 10%;
+  --primary: 143 23% 24%; /* Polar Sky #2F4B39 */
+  --primary-foreground: 0 0% 100%;
+
+  --warm-grey: 0 0% 29%; /* #4A4A4A */
   
   --muted: 0 0% 60%;
   --muted-foreground: 0 0% 40%;
@@ -17,6 +19,49 @@
   --border: 0 0% 90%;
   
   --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer utilities {
+  .animate-underline {
+    position: relative;
+  }
+  .animate-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: hsl(var(--primary));
+    transition: width 0.8s ease-in-out, opacity 0.4s ease-in-out;
+  }
+  .animate-underline.active::after {
+    width: 100%;
+  }
+  .animate-underline.completed::after {
+    width: 100%;
+    opacity: 0.45;
+  }
+}
+
+@keyframes manifesto-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.manifesto-line {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.manifesto-line.animate {
+  animation: manifesto-reveal 0.7s ease-in-out forwards;
 }
 
 body {

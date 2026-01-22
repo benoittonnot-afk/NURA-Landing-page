@@ -387,19 +387,128 @@ const CTASection = ({ innerRef }) => {
             </form>
           </div>
         )}
+      </div>
+    </section>
+  );
+};
+
+const ManifestoSection = () => {
+  const sectionRef = useRef(null);
+  const lineRefs = useRef([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const [underlineStates, setUnderlineStates] = useState([false, false, false]);
+  const [completedUnderlines, setCompletedUnderlines] = useState([false, false, false]);
+  const [activeLine, setActiveLine] = useState(-1);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    const handleScroll = () => {
+      if (!isVisible) return;
+      
+      const viewportCenter = window.innerHeight / 2;
+      let closestLine = -1;
+      let minDistance = Infinity;
+
+      lineRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const lineCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(viewportCenter - lineCenter);
         
-        {/* Bottom Slogans */}
-        <div className="mt-32 w-full grid grid-cols-1 md:grid-cols-3 gap-8 text-center border-t border-foreground/[0.03] pt-16">
-          <div className="text-[10px] md:text-xs tracking-[0.4em] font-normal text-foreground/40">
-            POWERED BY <span className="font-bold text-foreground">NATURE</span>
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestLine = i;
+        }
+      });
+
+      if (minDistance < 200) {
+        setActiveLine(closestLine);
+      } else {
+        setActiveLine(-1);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (isVisible) {
+      // Logic to trigger underlines after line animations
+      // Line 1 animates at 0ms, duration 700ms. Underline 1 at 700ms.
+      // Line 2 animates at 300ms, duration 700ms. Underline 2 at 1000ms.
+      // Line 3 animates at 600ms, duration 700ms. Underline 3 at 1300ms.
+
+      const timers = [];
+      
+      const lineDelays = [0, 300, 600];
+      const underlineDuration = 800;
+      
+      lineDelays.forEach((delay, index) => {
+        // Trigger underline animation
+        timers.push(setTimeout(() => {
+          setUnderlineStates(prev => {
+            const next = [...prev];
+            next[index] = true;
+            return next;
+          });
+        }, delay + 700));
+
+        // Mark underline as completed (to reduce opacity)
+        timers.push(setTimeout(() => {
+          setCompletedUnderlines(prev => {
+            const next = [...prev];
+            next[index] = true;
+            return next;
+          });
+        }, delay + 700 + underlineDuration));
+      });
+
+      return () => timers.forEach(clearTimeout);
+    }
+  }, [isVisible]);
+
+  const lines = [
+    { label: "POWERED BY", keyword: "NATURE", color: "text-primary" },
+    { label: "DESIGNED FOR", keyword: "HEALTH", color: "text-black" },
+    { label: "BACKED BY", keyword: "SCIENCE", color: "text-black" }
+  ];
+
+  return (
+    <section ref={sectionRef} className="py-40 md:py-64 bg-background overflow-hidden flex flex-col items-center min-h-[120vh] justify-center">
+      <div className="space-y-24 md:space-y-32 flex flex-col items-center w-full">
+        {lines.map((line, i) => (
+          <div 
+            key={i} 
+            ref={el => lineRefs.current[i] = el}
+            className={`manifesto-line flex flex-col items-center text-center space-y-4 md:space-y-8 w-full px-6 transition-all duration-700 ${isVisible ? 'animate' : ''} ${activeLine !== -1 && activeLine !== i ? 'opacity-30 scale-95' : 'opacity-100 scale-100'}`}
+            style={{ animationDelay: `${i * 300}ms` }}
+          >
+            <span className="text-[10px] md:text-xs font-medium tracking-[0.5em] text-warm-grey uppercase">
+              {line.label}
+            </span>
+            <span className={`text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.2em] uppercase ${line.color} transition-all duration-700`}>
+              <span className={`inline-block animate-underline ${underlineStates[i] ? 'active' : ''} ${completedUnderlines[i] ? 'completed' : ''}`}>
+                {line.keyword}
+              </span>
+            </span>
           </div>
-          <div className="text-[10px] md:text-xs tracking-[0.4em] font-normal text-foreground/40">
-            DESIGNED FOR <span className="font-bold text-foreground">HEALTH</span>
-          </div>
-          <div className="text-[10px] md:text-xs tracking-[0.4em] font-normal text-foreground/40">
-            BACKED BY <span className="font-bold text-foreground">SCIENCE</span>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
@@ -500,6 +609,7 @@ export default function App() {
       <ScienceSection innerRef={scienceRef} onJoin={scrollToCTA} />
       <StorySection innerRef={storyRef} onJoin={scrollToCTA} />
       <CTASection innerRef={ctaRef} />
+      <ManifestoSection />
       <Footer />
     </div>
   );
