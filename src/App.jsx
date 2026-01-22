@@ -502,7 +502,7 @@ const ManifestoSection = () => {
             <span className="text-[10px] md:text-xs font-medium tracking-[0.5em] text-warm-grey uppercase">
               {line.label}
             </span>
-            <span className={`text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.2em] uppercase ${line.color} transition-all duration-700`}>
+            <span className={`text-4xl md:text-6xl lg:text-7xl font-serif tracking-tight ${line.color} transition-all duration-700`}>
               <span className={`inline-block animate-underline ${underlineStates[i] ? 'active' : ''} ${completedUnderlines[i] ? 'completed' : ''}`}>
                 {line.keyword}
               </span>
