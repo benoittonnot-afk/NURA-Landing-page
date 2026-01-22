@@ -12,7 +12,10 @@ function getProjectId() {
 export const blink = createClient({
   projectId: getProjectId(),
   publishableKey: import.meta.env.VITE_BLINK_PUBLISHABLE_KEY,
-  auth: { mode: 'managed' },
+  auth: { 
+    mode: 'managed',
+    authRequired: false 
+  },
 })
 
 // Helper for Tracking Events (GA + Blink)
