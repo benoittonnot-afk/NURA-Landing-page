@@ -5,11 +5,12 @@ import { blink, trackEvent } from './lib/blink';
 // --- COMPOSANTS ---
 
 const SectionTitle = ({ children, className = "", light = false }) => (
-  <div className={`flex items-center gap-4 mb-8 ${className}`}>
+  <div className={`flex items-center justify-center md:justify-start gap-4 mb-8 ${className}`}>
     <div className={`w-12 h-[1px] ${light ? 'bg-white/30' : 'bg-foreground/20'}`}></div>
     <span className={`text-[10px] font-bold uppercase tracking-[0.4em] whitespace-nowrap ${light ? 'text-white/40' : 'text-foreground/40'}`}>
       {children}
     </span>
+    <div className={`md:hidden w-12 h-[1px] ${light ? 'bg-white/30' : 'bg-foreground/20'}`}></div>
   </div>
 );
 
@@ -120,12 +121,12 @@ const Hero = ({ onExplore }) => (
     </div>
 
     {/* Hero Content */}
-    <div className="relative z-10 text-center text-white px-4 fade-up max-w-6xl mx-auto">
-      <h1 className="hero-headline mb-8">
+    <div className="relative z-10 text-center text-white px-4 fade-up max-w-6xl mx-auto flex flex-col items-center">
+      <h1 className="hero-headline mb-8 text-off-white max-w-[380px] md:max-w-none mx-auto">
         Performance starts <br />
         <span className="italic">with health.</span>
       </h1>
-      <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-2xl mx-auto font-normal leading-relaxed">
+      <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-[340px] md:max-w-2xl mx-auto font-normal leading-relaxed text-off-white text-center">
         Natural tech activewear designed to support skin health and full performance cycle, inspired by Nordic values
       </p>
       <button 
@@ -148,12 +149,13 @@ const Hero = ({ onExplore }) => (
 
 const PhilosophySection = ({ innerRef, onJoin }) => (
   <section ref={innerRef} className="py-24 md:py-40 bg-background relative overflow-hidden">
-    <div className="max-w-7xl mx-auto px-6 md:px-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center mb-12">
+    <div className="section-fade-top" />
+    <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-20 flex flex-col items-center">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-16 md:gap-32 items-center mb-12 w-full">
         
         {/* Image Content - Position Left on Desktop (order-1) */}
-        <div className="order-1 relative group">
-          <div className="relative aspect-[4/5] md:aspect-auto md:h-[600px] overflow-hidden">
+        <div className="order-1 relative group w-full flex justify-center md:block">
+          <div className="relative aspect-[4/5] md:aspect-auto md:h-[600px] overflow-hidden w-full max-w-[380px] md:max-w-none mx-auto md:mx-0">
             <img 
               src="/femme.png"
               alt="Skin health activewear - Sweat on skin" 
@@ -162,21 +164,21 @@ const PhilosophySection = ({ innerRef, onJoin }) => (
           </div>
           
           {/* Text Overlay Box - Bottom Right */}
-          <div className="absolute -bottom-6 -right-6 md:-right-12 bg-[#d1d1d1] p-6 md:p-8 max-w-[280px] z-10">
-            <p className="text-[10px] md:text-xs font-normal uppercase tracking-[0.2em] leading-relaxed text-black/80">
+          <div className="absolute -bottom-6 -right-2 md:-right-12 bg-[#d1d1d1] p-6 md:p-8 max-w-[240px] md:max-w-[280px] z-10 shadow-sm">
+            <p className="text-[10px] md:text-xs font-normal uppercase tracking-[0.2em] leading-relaxed text-black/80 text-left">
               A NEW STANDARD FOR WHAT YOU WEAR ON YOUR SKIN.
             </p>
           </div>
         </div>
 
         {/* Text Content - Position Right on Desktop (order-2) */}
-        <div className="order-2 space-y-10">
+        <div className="order-2 flex flex-col items-center md:items-start text-center md:text-left space-y-10 w-full">
           <SectionTitle>The Philosophy</SectionTitle>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-foreground tracking-tight">
-            Skin care-level attention to what <span className="italic text-foreground/40">touches your skin.</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-stillness tracking-tight max-w-[380px] md:max-w-none mx-auto md:mx-0">
+            Skin care-level attention to what <span className="italic text-polar-sky/40">touches your skin.</span>
           </h2>
           
-          <div className="space-y-8 text-base md:text-lg font-normal text-foreground leading-relaxed max-w-xl">
+          <div className="space-y-8 text-base md:text-lg font-normal text-stillness/80 premium-body max-w-[380px] md:max-w-xl mx-auto md:mx-0">
             <p>
               <span className="font-bold">NURA is a new standard</span> - elevated, intentional activewear where sensorial design meets science, and skin health becomes a performance advantage.
             </p>
@@ -191,108 +193,111 @@ const PhilosophySection = ({ innerRef, onJoin }) => (
       </div>
       <WaitlistCTA onClick={onJoin} className="mt-12 md:mt-16" />
     </div>
+    <div className="section-fade-bottom" />
   </section>
 );
 
 const ScienceSection = ({ innerRef, onJoin }) => (
-  <section ref={innerRef} id="science" className="py-24 md:py-40 bg-white overflow-hidden">
-    <div className="max-w-7xl mx-auto px-6 md:px-12">
+  <section ref={innerRef} id="science" className="py-24 md:py-40 bg-white overflow-hidden relative">
+    <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-20 flex flex-col items-center">
       {/* Section Header */}
-      <div className="max-w-4xl mb-24 space-y-6">
+      <div className="max-w-4xl mb-24 flex flex-col items-center md:items-start text-center md:text-left space-y-6 mx-auto md:mx-0">
         <SectionTitle>The Science</SectionTitle>
-        <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] text-foreground tracking-tight">
+        <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] text-foreground tracking-tight max-w-[380px] md:max-w-none">
           Health-led performance wear designed to support your body from <span className="italic text-foreground/40">movement to recovery.</span>
         </h2>
       </div>
 
       {/* 3-Column Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 relative mb-20 md:mb-32">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 relative mb-20 md:mb-32 w-full">
         {/* Vertical Dividers for Desktop */}
         <div className="hidden md:block absolute top-0 bottom-0 left-1/3 w-[1px] bg-foreground/5"></div>
         <div className="hidden md:block absolute top-0 bottom-0 left-2/3 w-[1px] bg-foreground/5"></div>
 
         {/* Pillar 1: Ingredient Mindset */}
-        <div className="group space-y-8 transition-all duration-500 hover:translate-y-[-4px]">
-          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground/[0.03] group-hover:bg-foreground/5 transition-colors duration-500">
+        <div className="group flex flex-col items-center md:items-start text-center md:text-left space-y-8 transition-all duration-500 hover:translate-y-[-4px]">
+          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground/[0.03] group-hover:bg-foreground/5 transition-colors duration-500 mx-auto md:mx-0">
             <Droplet size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors">
               Skin-Led Ingredient<br />Mindset
             </h3>
-            <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700"></div>
+            <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
-          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-normal max-w-[280px] group-hover:text-foreground/80 transition-colors">
+          <p className="text-sm md:text-base text-foreground/60 premium-body max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
             A skin-first approach to materials and construction, designed for comfort in heat, sweat and movement, and to support recovery.
           </p>
         </div>
 
         {/* Pillar 2: Natural-Tech Performance */}
-        <div className="group space-y-8 transition-all duration-500 hover:translate-y-[-4px]">
-          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground/[0.03] group-hover:bg-foreground/5 transition-colors duration-500">
+        <div className="group flex flex-col items-center md:items-start text-center md:text-left space-y-8 transition-all duration-500 hover:translate-y-[-4px]">
+          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground/[0.03] group-hover:bg-foreground/5 transition-colors duration-500 mx-auto md:mx-0">
             <FlaskConical size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors">
               Natural-Tech<br />Performance
             </h3>
-            <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700"></div>
+            <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
-          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-normal max-w-[280px] group-hover:text-foreground/80 transition-colors">
+          <p className="text-sm md:text-base text-foreground/60 premium-body max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
             The finest natural materials, enhanced by modern science - engineered for high function and aligned with health and nature.
           </p>
         </div>
 
         {/* Pillar 3: Transparency */}
-        <div className="group space-y-8 transition-all duration-500 hover:translate-y-[-4px]">
-          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground/[0.03] group-hover:bg-foreground/5 transition-colors duration-500">
+        <div className="group flex flex-col items-center md:items-start text-center md:text-left space-y-8 transition-all duration-500 hover:translate-y-[-4px]">
+          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground/[0.03] group-hover:bg-foreground/5 transition-colors duration-500 mx-auto md:mx-0">
             <Shield size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors">
               Safety<br />& Transparency
             </h3>
-            <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700"></div>
+            <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
-          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-normal max-w-[280px] group-hover:text-foreground/80 transition-colors">
+          <p className="text-sm md:text-base text-foreground/60 premium-body max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
             Fabrics-level transparency - what it’s made of, and why. Material choices guided by integrity, safety, and microplastic-conscious design.
           </p>
         </div>
       </div>
       <WaitlistCTA onClick={onJoin} />
     </div>
+    <div className="section-fade-bottom" />
   </section>
 );
 
 const StorySection = ({ innerRef, onJoin }) => (
   <section ref={innerRef} className="relative py-24 md:py-40 bg-[#1a1a1a] text-white overflow-hidden">
-    {/* Background Texture/Image removed as requested */}
-    
-    <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16 md:mb-24">
-        <div className="space-y-8">
+    <div className="section-fade-top" />
+    <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-12 flex flex-col items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16 md:mb-24 w-full">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8 w-full">
           <SectionTitle light>Our Story</SectionTitle>
-          <h2 className="section-headline text-left">
+          <h2 className="section-headline text-center md:text-left max-w-[380px] md:max-w-none mx-auto md:mx-0">
             Born in the Nordics. <br />
             <span className="italic">Built for wellbeing.</span>
           </h2>
-          <div className="w-20 h-[1px] bg-white/30 my-6"></div>
-          <p className="text-gray-300 font-normal leading-relaxed text-lg">
-            NURA is rooted in my Nordic upbringing where movement was a ritual, and wellbeing a way of living in nature.
-          </p>
-          <p className="text-gray-300 font-normal leading-relaxed text-lg">
-            A decade in the beauty industry showed me how transparency and ingredient standards transformed skincare — while activewear remained dominated by synthetics, with little focus on what touches the skin.
-          </p>
-          <p className="text-gray-300 font-normal leading-relaxed text-lg">
-            NURA was created to change that: health-led activewear, designed with a skincare-level approach to materials — supporting skin wellbeing, performance, and recovery.
-          </p>
-          <p className="text-white font-serif italic text-xl pt-4">
+          <div className="w-20 h-[1px] bg-white/30 my-6 mx-auto md:mx-0"></div>
+          <div className="space-y-6 max-w-[380px] md:max-w-none mx-auto md:mx-0">
+            <p className="text-gray-300 font-normal premium-body text-base md:text-lg">
+              NURA is rooted in my Nordic upbringing where movement was a ritual, and wellbeing a way of living in nature.
+            </p>
+            <p className="text-gray-300 font-normal premium-body text-base md:text-lg">
+              A decade in the beauty industry showed me how transparency and ingredient standards transformed skincare — while activewear remained dominated by synthetics, with little focus on what touches the skin.
+            </p>
+            <p className="text-gray-300 font-normal premium-body text-base md:text-lg">
+              NURA was created to change that: health-led activewear, designed with a skincare-level approach to materials — supporting skin wellbeing, performance, and recovery.
+            </p>
+          </div>
+          <p className="text-white font-serif italic text-xl pt-4 text-center md:text-left">
             — Jenni Toft, Founder
           </p>
         </div>
 
         {/* Visual Element */}
-        <div className="h-[500px] md:h-[700px] w-full overflow-hidden relative shadow-2xl">
+        <div className="h-[400px] md:h-[700px] w-full max-w-[380px] md:max-w-none overflow-hidden relative shadow-2xl mx-auto">
           <img 
             src="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2FJenni__8d8d3a59.jpg?alt=media&token=470644f6-e195-40f5-bcc3-aa1ce2167cec" 
             alt="Jenni Toft - Founder" 
@@ -302,6 +307,7 @@ const StorySection = ({ innerRef, onJoin }) => (
       </div>
       <WaitlistCTA onClick={onJoin} />
     </div>
+    <div className="section-fade-bottom" />
   </section>
 );
 
@@ -335,34 +341,35 @@ const CTASection = ({ innerRef }) => {
   };
 
   return (
-    <section ref={innerRef} className="py-32 md:py-48 bg-white text-foreground overflow-hidden relative">
-      <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center">
+    <section ref={innerRef} className="py-32 md:py-48 bg-milkyway-frost text-stillness overflow-hidden relative">
+      <div className="section-fade-top" />
+      <div className="relative z-10 max-w-5xl mx-auto px-4 flex flex-col items-center">
         {/* Title Group */}
-        <div className="text-center space-y-6 mb-16">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight max-w-4xl mx-auto">
+        <div className="text-center flex flex-col items-center space-y-6 mb-16">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight max-w-[380px] md:max-w-4xl mx-auto">
             The next era of wellness <br />
-            starts with <span className="italic text-foreground/40">what you wear.</span>
+            starts with <span className="italic text-polar-sky/40">what you wear.</span>
           </h2>
-          <p className="text-base md:text-lg text-foreground/40 font-normal tracking-wide">
+          <p className="text-base md:text-lg text-stillness/40 font-normal tracking-wide max-w-[340px] md:max-w-none">
             Be the first to experience NURA.
           </p>
         </div>
         
         {status === 'success' ? (
-          <div className="w-full max-w-xl p-12 bg-foreground/[0.02] border border-foreground/5 text-center animate-fade-in">
+          <div className="w-full max-w-xl p-12 bg-stillness/[0.02] border border-stillness/5 text-center animate-fade-in mx-auto">
             <p className="font-serif italic text-2xl">Welcome to NURA.</p>
-            <p className="text-foreground/40 mt-2 font-normal">We will be in touch shortly.</p>
+            <p className="text-stillness/40 mt-2 font-normal">We will be in touch shortly.</p>
           </div>
         ) : (
-          <div className="w-full max-w-2xl">
-            <form onSubmit={handleSubmit} className="space-y-10">
+          <div className="w-full max-w-2xl mx-auto">
+            <form onSubmit={handleSubmit} className="space-y-10 flex flex-col items-center">
               {/* Input Group */}
-              <div className="relative flex flex-col md:flex-row items-end gap-6 border-b border-foreground/10 pb-4 focus-within:border-foreground/30 transition-colors">
+              <div className="relative flex flex-col md:flex-row items-center md:items-end gap-6 border-b border-stillness/10 pb-4 focus-within:border-stillness/30 transition-colors w-full">
                 <input 
                   type="email" 
                   required
                   placeholder="Email address" 
-                  className="flex-1 bg-transparent py-2 px-0 focus:outline-none text-xl md:text-2xl font-normal placeholder:text-foreground/20 text-foreground"
+                  className="flex-1 bg-transparent py-2 px-0 focus:outline-none text-xl md:text-2xl font-normal placeholder:text-stillness/20 text-stillness text-center md:text-left w-full"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -376,11 +383,11 @@ const CTASection = ({ innerRef }) => {
               </div>
 
               {/* Checkbox Group */}
-              <div className="flex items-center gap-3 group cursor-pointer" onClick={() => setPreorder(!preorder)}>
-                <div className={`w-5 h-5 border rounded flex items-center justify-center transition-all ${preorder ? 'bg-black border-black' : 'border-foreground/10 group-hover:border-foreground/30'}`}>
+              <div className="flex items-center justify-center md:justify-start gap-3 group cursor-pointer w-full" onClick={() => setPreorder(!preorder)}>
+                <div className={`w-5 h-5 border rounded flex items-center justify-center transition-all flex-shrink-0 ${preorder ? 'bg-black border-black' : 'border-stillness/10 group-hover:border-stillness/30'}`}>
                   {preorder && <div className="w-2.5 h-2.5 bg-white rounded-sm"></div>}
                 </div>
-                <span className="text-[10px] md:text-xs text-foreground/30 font-normal tracking-widest group-hover:text-foreground/50 transition-colors uppercase">
+                <span className="text-[10px] md:text-xs text-stillness/30 font-normal tracking-widest group-hover:text-stillness/50 transition-colors uppercase text-left">
                   I would consider pre-ordering when available
                 </span>
               </div>
@@ -388,6 +395,7 @@ const CTASection = ({ innerRef }) => {
           </div>
         )}
       </div>
+      <div className="section-fade-bottom" />
     </section>
   );
 };
@@ -515,12 +523,12 @@ const ManifestoSection = () => {
 };
 
 const Footer = () => (
-  <footer className="bg-white pt-24 pb-12 px-6 md:px-12 border-t border-gray-100">
-    <div className="max-w-7xl mx-auto">
+  <footer className="bg-white pt-24 pb-12 px-4 md:px-12 border-t border-gray-100">
+    <div className="max-w-7xl mx-auto flex flex-col items-center">
       {/* Top Section */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-20 w-full">
         {/* Brand Column */}
-        <div className="md:col-span-6 space-y-6">
+        <div className="md:col-span-6 flex flex-col items-center md:items-start space-y-6 text-center md:text-left">
           <div 
             className="text-2xl md:text-3xl font-serif font-bold tracking-widest text-gray-900 cursor-pointer"
             onClick={() => {
@@ -528,7 +536,7 @@ const Footer = () => (
               trackEvent('footer_logo_click');
             }}
           >
-            NURA®
+            NURA<span className="text-lingonberry-noir">®</span>
           </div>
           <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-foreground/40 leading-loose">
             NATURAL-TECH<br />ACTIVEWEAR
@@ -536,7 +544,7 @@ const Footer = () => (
         </div>
 
         {/* Contact Column */}
-        <div className="md:col-span-3 space-y-6">
+        <div className="md:col-span-3 flex flex-col items-center md:items-start space-y-6 text-center md:text-left">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-foreground/30">
             Contact
           </p>
@@ -550,7 +558,7 @@ const Footer = () => (
         </div>
 
         {/* Origin Column */}
-        <div className="md:col-span-3 space-y-6">
+        <div className="md:col-span-3 flex flex-col items-center md:items-start space-y-6 text-center md:text-left">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-foreground/30">
             Origin
           </p>
@@ -564,12 +572,12 @@ const Footer = () => (
       <div className="w-full h-[1px] bg-gray-100 mb-8"></div>
 
       {/* Bottom Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/30">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6 w-full">
+        <div className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/30 text-center md:text-left">
           © {new Date().getFullYear()} NURA. ALL RIGHTS RESERVED.
         </div>
         
-        <div className="flex gap-8 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/30">
+        <div className="flex gap-8 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/30 justify-center md:justify-end">
           <a href="#" className="hover:text-foreground transition-colors" onClick={() => trackEvent('footer_privacy_click')}>Privacy</a>
           <a href="#" className="hover:text-foreground transition-colors" onClick={() => trackEvent('footer_terms_click')}>Terms</a>
         </div>

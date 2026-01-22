@@ -70,15 +70,31 @@ body {
 
 @layer components {
   .section-headline {
-    @apply text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center;
+    @apply text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center md:text-center;
   }
   
   .hero-headline {
-    @apply text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] tracking-tight text-center;
+    @apply text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] tracking-tight text-center md:text-center;
   }
   
   .label-headline {
-    @apply text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold text-center opacity-60;
+    @apply text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold text-center opacity-60 flex items-center justify-center;
+  }
+
+  .mobile-text-center {
+    @apply text-center md:text-left;
+  }
+
+  .mobile-centered-container {
+    @apply max-w-[380px] mx-auto px-4 md:max-w-none md:mx-0 md:px-0;
+  }
+  
+  .premium-body {
+    @apply leading-[1.8] md:leading-relaxed text-center md:text-left;
+  }
+
+  .mobile-heading-center {
+    @apply text-center md:text-left mx-auto md:mx-0;
   }
 }
 
