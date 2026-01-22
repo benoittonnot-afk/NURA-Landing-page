@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --background: 34 45% 96%;
+  --background: 40 20% 98%;
   --foreground: 0 0% 10%;
   
   --primary: 0 0% 100%;
@@ -16,34 +16,11 @@
   
   --border: 0 0% 90%;
   
-  --milkyway-frost: 34 45% 96%;
-  --stillness: 0 7% 6%;
-  --polar-sky: 139 23% 24%;
-  --lingonberry-noir: 3 40% 18%;
-  --arctic-sun: 11 80% 60%;
-  
   --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-  @apply bg-[#F9F5F0] text-foreground font-sans antialiased;
-}
-
-@layer utilities {
-  .section-fade-bottom {
-    @apply absolute bottom-0 left-0 right-0 h-[200px] md:h-[400px] z-10 pointer-events-none;
-    background: linear-gradient(to bottom, transparent, #F9F5F0);
-  }
-  
-  .section-fade-top {
-    @apply absolute top-0 left-0 right-0 h-[200px] md:h-[400px] z-10 pointer-events-none;
-    background: linear-gradient(to top, transparent, #F9F5F0);
-  }
-
-  .section-fade-to-stillness {
-    @apply absolute bottom-0 left-0 right-0 h-[200px] md:h-[400px] z-10 pointer-events-none;
-    background: linear-gradient(to bottom, transparent, #0F0D0D);
-  }
+  @apply bg-background text-foreground font-sans antialiased;
 }
 
 @layer components {
