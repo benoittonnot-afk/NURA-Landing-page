@@ -13,11 +13,11 @@ const SectionTitle = ({ children, className = "", light = false }) => (
   </div>
 );
 
-const WaitlistCTA = ({ onClick, className = "" }) => (
-  <div className={`flex justify-center mt-20 md:mt-24 ${className}`}>
+const WaitlistCTA = ({ onClick, className = "mt-20 md:mt-24" }) => (
+  <div className={`flex justify-center ${className}`}>
     <button
       onClick={onClick}
-      className="px-10 py-4 bg-white border border-gray-900/10 text-gray-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-sm transition-all duration-300 transform hover:scale-[1.05] hover:shadow-md active:scale-[0.98]"
+      className="px-10 py-4 bg-white border border-gray-900/10 text-gray-900 rounded-full text-[11px] font-bold uppercase tracking-[0.25em] shadow-sm transition-all duration-300 transform hover:scale-[1.05] hover:shadow-md active:scale-[0.98]"
     >
       Join the experience
     </button>
@@ -63,7 +63,7 @@ const Navbar = ({ refs }) => {
         </div>
 
         {/* Desktop Menu */}
-        <div className={`hidden md:flex items-center space-x-12 text-[10px] uppercase tracking-[0.4em] font-medium transition-colors duration-300 ${isScrolled ? 'text-gray-900' : 'text-white/80'}`}>
+        <div className={`hidden md:flex items-center space-x-12 text-[10px] uppercase tracking-[0.4em] font-bold transition-colors duration-300 ${isScrolled ? 'text-gray-900' : 'text-white/80'}`}>
           <button onClick={() => scrollTo(refs.philosophy, 'philosophy')} className="hover:text-white transition-colors">Philosophy</button>
           <button onClick={() => scrollTo(refs.science, 'science')} className="hover:text-white transition-colors">Science</button>
           <button onClick={() => scrollTo(refs.story, 'story')} className="hover:text-white transition-colors">Story</button>
@@ -92,9 +92,9 @@ const Navbar = ({ refs }) => {
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 animate-fade-in">
-          <button onClick={() => scrollTo(refs.philosophy, 'philosophy_mobile')} className="text-xs uppercase tracking-[0.4em] font-medium text-gray-900">Philosophy</button>
-          <button onClick={() => scrollTo(refs.science, 'science_mobile')} className="text-xs uppercase tracking-[0.4em] font-medium text-gray-900">Science</button>
-          <button onClick={() => scrollTo(refs.story, 'story_mobile')} className="text-xs uppercase tracking-[0.4em] font-medium text-gray-900">Story</button>
+          <button onClick={() => scrollTo(refs.philosophy, 'philosophy_mobile')} className="text-xs uppercase tracking-[0.4em] font-bold text-gray-900">Philosophy</button>
+          <button onClick={() => scrollTo(refs.science, 'science_mobile')} className="text-xs uppercase tracking-[0.4em] font-bold text-gray-900">Science</button>
+          <button onClick={() => scrollTo(refs.story, 'story_mobile')} className="text-xs uppercase tracking-[0.4em] font-bold text-gray-900">Story</button>
           <button onClick={() => scrollTo(refs.cta, 'waitlist_cta_mobile')} className="px-10 py-4 border border-gray-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-gray-900 mt-4">Join Waitlist</button>
         </div>
       )}
@@ -125,7 +125,7 @@ const Hero = ({ onExplore }) => (
         Performance starts <br />
         <span className="italic">with health.</span>
       </h1>
-      <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+      <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-2xl mx-auto font-normal leading-relaxed">
         Natural tech activewear designed to support skin health and full performance cycle, inspired by Nordic values
       </p>
       <button 
@@ -133,7 +133,7 @@ const Hero = ({ onExplore }) => (
           onExplore();
           trackEvent('hero_explore_click');
         }}
-        className="group inline-flex items-center gap-2 text-sm uppercase tracking-widest border border-white/40 px-8 py-3 hover:bg-white hover:text-black transition-all duration-500 rounded-sm"
+        className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white/40 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full"
       >
         Discover
       </button>
@@ -163,7 +163,7 @@ const PhilosophySection = ({ innerRef, onJoin }) => (
           
           {/* Text Overlay Box - Bottom Right */}
           <div className="absolute -bottom-6 -right-6 md:-right-12 bg-[#d1d1d1] p-6 md:p-8 max-w-[280px] z-10">
-            <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] leading-relaxed text-black/80">
+            <p className="text-[10px] md:text-xs font-normal uppercase tracking-[0.2em] leading-relaxed text-black/80">
               A NEW STANDARD FOR WHAT YOU WEAR ON YOUR SKIN.
             </p>
           </div>
@@ -176,7 +176,7 @@ const PhilosophySection = ({ innerRef, onJoin }) => (
             Skin care-level attention to what <span className="italic text-foreground/40">touches your skin.</span>
           </h2>
           
-          <div className="space-y-8 text-base md:text-lg font-light text-foreground/80 leading-relaxed max-w-xl">
+          <div className="space-y-8 text-base md:text-lg font-normal text-foreground leading-relaxed max-w-xl">
             <p>
               <span className="font-bold">NURA is a new standard</span> - elevated, intentional activewear where sensorial design meets science, and skin health becomes a performance advantage.
             </p>
@@ -187,19 +187,9 @@ const PhilosophySection = ({ innerRef, onJoin }) => (
               Born from the desire to connect performance, health and nature, rooted in the Nordic heritage and wellness culture.
             </p>
           </div>
-
-          <div className="pt-4">
-            <a 
-              href="#science" 
-              className="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-foreground/20 pb-2 hover:border-foreground transition-all duration-300 inline-block"
-              onClick={() => trackEvent('manifesto_click')}
-            >
-              Read the manifesto
-            </a>
-          </div>
         </div>
       </div>
-      <WaitlistCTA onClick={onJoin} />
+      <WaitlistCTA onClick={onJoin} className="mt-12 md:mt-16" />
     </div>
   </section>
 );
@@ -232,7 +222,7 @@ const ScienceSection = ({ innerRef, onJoin }) => (
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700"></div>
           </div>
-          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-light max-w-[280px] group-hover:text-foreground/80 transition-colors">
+          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-normal max-w-[280px] group-hover:text-foreground/80 transition-colors">
             A skin-first approach to materials and construction, designed for comfort in heat, sweat and movement, and to support recovery.
           </p>
         </div>
@@ -248,7 +238,7 @@ const ScienceSection = ({ innerRef, onJoin }) => (
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700"></div>
           </div>
-          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-light max-w-[280px] group-hover:text-foreground/80 transition-colors">
+          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-normal max-w-[280px] group-hover:text-foreground/80 transition-colors">
             The finest natural materials, enhanced by modern science - engineered for high function and aligned with health and nature.
           </p>
         </div>
@@ -264,7 +254,7 @@ const ScienceSection = ({ innerRef, onJoin }) => (
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700"></div>
           </div>
-          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-light max-w-[280px] group-hover:text-foreground/80 transition-colors">
+          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-normal max-w-[280px] group-hover:text-foreground/80 transition-colors">
             Fabrics-level transparency - what it’s made of, and why. Material choices guided by integrity, safety, and microplastic-conscious design.
           </p>
         </div>
@@ -287,13 +277,13 @@ const StorySection = ({ innerRef, onJoin }) => (
             <span className="italic">Built for wellbeing.</span>
           </h2>
           <div className="w-20 h-[1px] bg-white/30 my-6"></div>
-          <p className="text-gray-300 font-light leading-relaxed text-lg">
+          <p className="text-gray-300 font-normal leading-relaxed text-lg">
             NURA is rooted in my Nordic upbringing where movement was a ritual, and wellbeing a way of living in nature.
           </p>
-          <p className="text-gray-300 font-light leading-relaxed text-lg">
+          <p className="text-gray-300 font-normal leading-relaxed text-lg">
             A decade in the beauty industry showed me how transparency and ingredient standards transformed skincare — while activewear remained dominated by synthetics, with little focus on what touches the skin.
           </p>
-          <p className="text-gray-300 font-light leading-relaxed text-lg">
+          <p className="text-gray-300 font-normal leading-relaxed text-lg">
             NURA was created to change that: health-led activewear, designed with a skincare-level approach to materials — supporting skin wellbeing, performance, and recovery.
           </p>
           <p className="text-white font-serif italic text-xl pt-4">
@@ -353,7 +343,7 @@ const CTASection = ({ innerRef }) => {
             The next era of wellness <br />
             starts with <span className="italic text-foreground/40">what you wear.</span>
           </h2>
-          <p className="text-base md:text-lg text-foreground/40 font-light tracking-wide">
+          <p className="text-base md:text-lg text-foreground/40 font-normal tracking-wide">
             Be the first to experience NURA.
           </p>
         </div>
@@ -361,7 +351,7 @@ const CTASection = ({ innerRef }) => {
         {status === 'success' ? (
           <div className="w-full max-w-xl p-12 bg-foreground/[0.02] border border-foreground/5 text-center animate-fade-in">
             <p className="font-serif italic text-2xl">Welcome to NURA.</p>
-            <p className="text-foreground/40 mt-2 font-light">We will be in touch shortly.</p>
+            <p className="text-foreground/40 mt-2 font-normal">We will be in touch shortly.</p>
           </div>
         ) : (
           <div className="w-full max-w-2xl">
@@ -372,7 +362,7 @@ const CTASection = ({ innerRef }) => {
                   type="email" 
                   required
                   placeholder="Email address" 
-                  className="flex-1 bg-transparent py-2 px-0 focus:outline-none text-xl md:text-2xl font-light placeholder:text-foreground/20 text-foreground"
+                  className="flex-1 bg-transparent py-2 px-0 focus:outline-none text-xl md:text-2xl font-normal placeholder:text-foreground/20 text-foreground"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -390,7 +380,7 @@ const CTASection = ({ innerRef }) => {
                 <div className={`w-5 h-5 border rounded flex items-center justify-center transition-all ${preorder ? 'bg-black border-black' : 'border-foreground/10 group-hover:border-foreground/30'}`}>
                   {preorder && <div className="w-2.5 h-2.5 bg-white rounded-sm"></div>}
                 </div>
-                <span className="text-[10px] md:text-xs text-foreground/30 font-light tracking-widest group-hover:text-foreground/50 transition-colors uppercase">
+                <span className="text-[10px] md:text-xs text-foreground/30 font-normal tracking-widest group-hover:text-foreground/50 transition-colors uppercase">
                   I would consider pre-ordering when available
                 </span>
               </div>
@@ -400,13 +390,13 @@ const CTASection = ({ innerRef }) => {
         
         {/* Bottom Slogans */}
         <div className="mt-32 w-full grid grid-cols-1 md:grid-cols-3 gap-8 text-center border-t border-foreground/[0.03] pt-16">
-          <div className="text-[10px] md:text-xs tracking-[0.4em] font-light text-foreground/40">
+          <div className="text-[10px] md:text-xs tracking-[0.4em] font-normal text-foreground/40">
             POWERED BY <span className="font-bold text-foreground">NATURE</span>
           </div>
-          <div className="text-[10px] md:text-xs tracking-[0.4em] font-light text-foreground/40">
+          <div className="text-[10px] md:text-xs tracking-[0.4em] font-normal text-foreground/40">
             DESIGNED FOR <span className="font-bold text-foreground">HEALTH</span>
           </div>
-          <div className="text-[10px] md:text-xs tracking-[0.4em] font-light text-foreground/40">
+          <div className="text-[10px] md:text-xs tracking-[0.4em] font-normal text-foreground/40">
             BACKED BY <span className="font-bold text-foreground">SCIENCE</span>
           </div>
         </div>
