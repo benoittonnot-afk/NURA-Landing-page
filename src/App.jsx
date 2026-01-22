@@ -173,48 +173,67 @@ const PhilosophySection = ({ innerRef }) => (
 );
 
 const ScienceSection = ({ innerRef }) => (
-  <section ref={innerRef} className="py-24 md:py-40 bg-white">
+  <section ref={innerRef} className="py-24 md:py-40 bg-white overflow-hidden">
     <div className="max-w-7xl mx-auto px-6 md:px-12">
-      <div className="text-center max-w-5xl mx-auto mb-20 space-y-6">
-        <span className="label-headline block">The Science</span>
-        <h2 className="section-headline">
-          Health-led performance <br />
-          <span className="italic">from movement to recovery.</span>
+      <div className="text-left mb-24 max-w-5xl">
+        <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] text-foreground tracking-tight">
+          Health-led performance wear designed to support your body from <span className="italic text-foreground/40">movement to recovery.</span>
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
         {/* Card 1: Ingredient Mindset */}
-        <div className="flex flex-col items-center text-center space-y-6 group cursor-default">
-          <div className="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center mb-4 transition-colors group-hover:bg-gray-100">
-            <FlaskConical className="text-gray-800" strokeWidth={1} size={28} />
+        <div className="flex flex-col space-y-8 group">
+          <div className="space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/80 group-hover:text-foreground transition-colors">
+              Skin Led Ingredient<br />Mindset
+            </h3>
+            <div className="h-[1px] w-8 bg-foreground/10 group-hover:w-full group-hover:bg-foreground/30 transition-all duration-700 ease-in-out"></div>
           </div>
-          <h3 className="text-xl font-serif uppercase tracking-wide">INGREDIENT MINDSET FOR TEXTILES.</h3>
-          <p className="text-sm text-gray-500 leading-relaxed font-light px-4">
+          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-light transition-colors group-hover:text-foreground/90">
             A skin-first approach to materials and construction, designed for comfort in heat, sweat and movement, and to support recovery.
           </p>
+          <div className="pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+             <div className="w-10 h-10 rounded-full border border-foreground/10 flex items-center justify-center">
+                <ArrowRight size={16} className="text-foreground/40" />
+             </div>
+          </div>
         </div>
 
         {/* Card 2: Natural-Tech Performance */}
-        <div className="flex flex-col items-center text-center space-y-6 group cursor-default">
-          <div className="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center mb-4 transition-colors group-hover:bg-gray-100">
-            <Leaf className="text-gray-800" strokeWidth={1} size={28} />
+        <div className="flex flex-col space-y-8 group">
+          <div className="space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/80 group-hover:text-foreground transition-colors">
+              Natural-Tech<br />Performance
+            </h3>
+            <div className="h-[1px] w-8 bg-foreground/10 group-hover:w-full group-hover:bg-foreground/30 transition-all duration-700 ease-in-out"></div>
           </div>
-          <h3 className="text-xl font-serif uppercase tracking-wide">NATURAL-TECH PERFORMANCE</h3>
-          <p className="text-sm text-gray-500 leading-relaxed font-light px-4">
-             The finest natural materials, enhanced by modern science - engineered for high function and aligned with health and nature.
+          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-light transition-colors group-hover:text-foreground/90">
+            The finest natural materials, enhanced by modern science - engineered for high function and aligned with health and nature.
           </p>
+          <div className="pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+             <div className="w-10 h-10 rounded-full border border-foreground/10 flex items-center justify-center">
+                <ArrowRight size={16} className="text-foreground/40" />
+             </div>
+          </div>
         </div>
 
         {/* Card 3: Transparency */}
-        <div className="flex flex-col items-center text-center space-y-6 group cursor-default">
-          <div className="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center mb-4 transition-colors group-hover:bg-gray-100">
-            <Eye className="text-gray-800" strokeWidth={1} size={28} />
+        <div className="flex flex-col space-y-8 group">
+          <div className="space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/80 group-hover:text-foreground transition-colors">
+              Safety<br />& Transparency
+            </h3>
+            <div className="h-[1px] w-8 bg-foreground/10 group-hover:w-full group-hover:bg-foreground/30 transition-all duration-700 ease-in-out"></div>
           </div>
-          <h3 className="text-xl font-serif uppercase tracking-wide">TRANSPARENCY</h3>
-          <p className="text-sm text-gray-500 leading-relaxed font-light px-4">
-            Skincare-level transparency - what it’s made of, and why. Material choices guided by integrity, safety, and microplastic-conscious design.
+          <p className="text-sm md:text-base text-foreground/60 leading-relaxed font-light transition-colors group-hover:text-foreground/90">
+            Fabrics-level transparency - what it’s made of, and why. Material choices guided by integrity, safety, and microplastic-conscious design.
           </p>
+          <div className="pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+             <div className="w-10 h-10 rounded-full border border-foreground/10 flex items-center justify-center">
+                <ArrowRight size={16} className="text-foreground/40" />
+             </div>
+          </div>
         </div>
       </div>
     </div>
