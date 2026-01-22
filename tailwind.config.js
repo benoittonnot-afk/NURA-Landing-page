@@ -18,6 +18,12 @@ export default {
           foreground: 'hsl(var(--muted-foreground))',
         },
         border: 'hsl(var(--border))',
+        // Official Nura Palette
+        'milkyway-frost': '#F9F5F0',
+        'stillness': '#0F0D0D',
+        'polar-sky': '#2F4B39',
+        'lingonberry-noir': '#401C1B',
+        'arctic-sun': '#EA6347',
       },
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
