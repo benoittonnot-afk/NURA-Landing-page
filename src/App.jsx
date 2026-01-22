@@ -306,7 +306,7 @@ const CTASection = ({ innerRef }) => {
     trackEvent('waitlist_submission_start', { email_provided: !!email });
     
     try {
-      await blink.db.create('waitlist', {
+      await blink.db.waitlist.create({
         email: email
       });
       
