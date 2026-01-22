@@ -5,22 +5,40 @@
 @tailwind utilities;
 
 :root {
-  --background: 40 20% 98%;
-  --foreground: 0 0% 10%;
+  --milkyway-frost: 34 33% 96%;
+  --polar-sky: 141 23% 24%;
+  --stillness: 0 7% 6%;
+  --arctic-sun: 11 80% 60%;
+  --lingonberry-noir: 1 41% 18%;
+
+  --background: var(--milkyway-frost);
+  --foreground: var(--polar-sky);
   
-  --primary: 0 0% 100%;
-  --primary-foreground: 0 0% 10%;
+  --primary: var(--milkyway-frost);
+  --primary-foreground: var(--polar-sky);
   
-  --muted: 0 0% 60%;
-  --muted-foreground: 0 0% 40%;
+  --muted: 34 10% 80%;
+  --muted-foreground: 34 10% 40%;
   
-  --border: 0 0% 90%;
+  --border: var(--polar-sky) / 0.1;
   
-  --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
   @apply bg-background text-foreground font-sans antialiased;
+}
+
+@layer utilities {
+  .transition-gradient-to-dark {
+    background: linear-gradient(to bottom, hsl(var(--milkyway-frost)), hsl(var(--polar-sky)));
+  }
+  .transition-gradient-from-dark {
+    background: linear-gradient(to bottom, hsl(var(--polar-sky)), hsl(var(--milkyway-frost)));
+  }
+  .transition-gradient-to-black {
+    background: linear-gradient(to bottom, hsl(var(--milkyway-frost)), hsl(var(--stillness)));
+  }
 }
 
 @layer components {

@@ -9,6 +9,11 @@ export default {
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        'milkyway-frost': '#F9F5F0',
+        'polar-sky': '#2F4B39',
+        'stillness': '#0F0D0D',
+        'arctic-sun': '#EA6347',
+        'lingonberry-noir': '#401C1B',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
