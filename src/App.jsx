@@ -58,7 +58,7 @@ const Navbar = ({ refs }) => {
           <img 
             src="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2Flogo__9e9645c9.png?alt=media&token=9303b069-4127-40a6-9534-c163821b50fa" 
             alt="NURA Logo" 
-            className={`h-5 md:h-6 object-contain transition-all duration-300 ${isScrolled ? 'brightness-0' : 'brightness-0 invert'}`}
+            className={`h-7 md:h-10 object-contain transition-all duration-300 ${isScrolled ? 'brightness-0' : 'brightness-0 invert'}`}
           />
         </div>
 
@@ -406,44 +406,64 @@ const CTASection = ({ innerRef }) => {
 };
 
 const Footer = () => (
-  <footer className="bg-white border-t border-gray-100 py-12 px-6">
-    <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-      <div 
-        className="text-2xl font-serif font-bold tracking-widest text-gray-900 cursor-pointer"
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          trackEvent('footer_logo_click');
-        }}
-      >
-        NURA
-      </div>
-      
-      <div className="flex gap-8 text-xs font-bold uppercase tracking-[0.3em] text-foreground/40">
-        <a 
-          href="#" 
-          className="hover:text-gray-900 transition-colors"
-          onClick={() => trackEvent('social_click', { platform: 'instagram' })}
-        >
-          Instagram
-        </a>
-        <a 
-          href="#" 
-          className="hover:text-gray-900 transition-colors"
-          onClick={() => trackEvent('social_click', { platform: 'tiktok' })}
-        >
-          TikTok
-        </a>
-        <a 
-          href="#" 
-          className="hover:text-gray-900 transition-colors"
-          onClick={() => trackEvent('social_click', { platform: 'contact' })}
-        >
-          Contact
-        </a>
+  <footer className="bg-white pt-24 pb-12 px-6 md:px-12 border-t border-gray-100">
+    <div className="max-w-7xl mx-auto">
+      {/* Top Section */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-20">
+        {/* Brand Column */}
+        <div className="md:col-span-6 space-y-6">
+          <div 
+            className="text-2xl md:text-3xl font-serif font-bold tracking-widest text-gray-900 cursor-pointer"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              trackEvent('footer_logo_click');
+            }}
+          >
+            NURA®
+          </div>
+          <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-foreground/40 leading-loose">
+            NATURAL-TECH<br />ACTIVEWEAR
+          </p>
+        </div>
+
+        {/* Contact Column */}
+        <div className="md:col-span-3 space-y-6">
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-foreground/30">
+            Contact
+          </p>
+          <a 
+            href="mailto:jenni@nurasport.com" 
+            className="text-sm md:text-base font-normal text-foreground/80 hover:text-foreground transition-colors block"
+            onClick={() => trackEvent('footer_contact_click')}
+          >
+            jenni@nurasport.com
+          </a>
+        </div>
+
+        {/* Origin Column */}
+        <div className="md:col-span-3 space-y-6">
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-foreground/30">
+            Origin
+          </p>
+          <p className="text-sm md:text-base font-normal text-foreground/80">
+            Designed in Denmark
+          </p>
+        </div>
       </div>
 
-      <div className="text-[10px] text-gray-400">
-        © {new Date().getFullYear()} NURA Activewear. All rights reserved.
+      {/* Separator */}
+      <div className="w-full h-[1px] bg-gray-100 mb-8"></div>
+
+      {/* Bottom Section */}
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/30">
+          © {new Date().getFullYear()} NURA. ALL RIGHTS RESERVED.
+        </div>
+        
+        <div className="flex gap-8 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/30">
+          <a href="#" className="hover:text-foreground transition-colors" onClick={() => trackEvent('footer_privacy_click')}>Privacy</a>
+          <a href="#" className="hover:text-foreground transition-colors" onClick={() => trackEvent('footer_terms_click')}>Terms</a>
+        </div>
       </div>
     </div>
   </footer>
