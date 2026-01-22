@@ -13,6 +13,17 @@ const SectionTitle = ({ children, className = "", light = false }) => (
   </div>
 );
 
+const WaitlistCTA = ({ onClick, className = "" }) => (
+  <div className={`flex justify-center mt-20 md:mt-24 ${className}`}>
+    <button
+      onClick={onClick}
+      className="px-10 py-4 bg-white border border-gray-900/10 text-gray-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-sm transition-all duration-300 transform hover:scale-[1.05] hover:shadow-md active:scale-[0.98]"
+    >
+      Join the waitlist
+    </button>
+  </div>
+);
+
 const Navbar = ({ refs }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -135,62 +146,65 @@ const Hero = ({ onExplore }) => (
   </header>
 );
 
-const PhilosophySection = ({ innerRef }) => (
+const PhilosophySection = ({ innerRef, onJoin }) => (
   <section ref={innerRef} className="py-24 md:py-40 bg-background relative overflow-hidden">
-    <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center">
-      
-      {/* Image Content - Position Left on Desktop (order-1) */}
-      <div className="order-1 relative group">
-        <div className="relative aspect-[4/5] md:aspect-auto md:h-[600px] overflow-hidden">
-          <img 
-            src="/femme.png"
-            alt="Skin health activewear - Sweat on skin" 
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-          />
-        </div>
+    <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center mb-12">
         
-        {/* Text Overlay Box - Bottom Right */}
-        <div className="absolute -bottom-6 -right-6 md:-right-12 bg-[#d1d1d1] p-6 md:p-8 max-w-[280px] z-10">
-          <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] leading-relaxed text-black/80">
-            A NEW STANDARD FOR WHAT YOU WEAR ON YOUR SKIN.
-          </p>
-        </div>
-      </div>
-
-      {/* Text Content - Position Right on Desktop (order-2) */}
-      <div className="order-2 space-y-10">
-        <SectionTitle>The Philosophy</SectionTitle>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-foreground tracking-tight">
-          Skin care-level attention to what <span className="italic text-foreground/40">touches your skin.</span>
-        </h2>
-        
-        <div className="space-y-8 text-base md:text-lg font-light text-foreground/80 leading-relaxed max-w-xl">
-          <p>
-            <span className="font-bold">NURA is a new standard</span> - elevated, intentional activewear where sensorial design meets science, and skin health becomes a performance advantage.
-          </p>
-          <p>
-            We combine natural-tech materials with a skin care-level approach to support skin and total wellbeing, from movement to recovery.
-          </p>
-          <p>
-            Born from the desire to connect performance, health and nature, rooted in the Nordic heritage and wellness culture.
-          </p>
+        {/* Image Content - Position Left on Desktop (order-1) */}
+        <div className="order-1 relative group">
+          <div className="relative aspect-[4/5] md:aspect-auto md:h-[600px] overflow-hidden">
+            <img 
+              src="/femme.png"
+              alt="Skin health activewear - Sweat on skin" 
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            />
+          </div>
+          
+          {/* Text Overlay Box - Bottom Right */}
+          <div className="absolute -bottom-6 -right-6 md:-right-12 bg-[#d1d1d1] p-6 md:p-8 max-w-[280px] z-10">
+            <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] leading-relaxed text-black/80">
+              A NEW STANDARD FOR WHAT YOU WEAR ON YOUR SKIN.
+            </p>
+          </div>
         </div>
 
-        <div className="pt-4">
-          <a 
-            href="#science" 
-            className="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-foreground/20 pb-2 hover:border-foreground transition-all duration-300 inline-block"
-            onClick={() => trackEvent('manifesto_click')}
-          >
-            Read the manifesto
-          </a>
+        {/* Text Content - Position Right on Desktop (order-2) */}
+        <div className="order-2 space-y-10">
+          <SectionTitle>The Philosophy</SectionTitle>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-foreground tracking-tight">
+            Skin care-level attention to what <span className="italic text-foreground/40">touches your skin.</span>
+          </h2>
+          
+          <div className="space-y-8 text-base md:text-lg font-light text-foreground/80 leading-relaxed max-w-xl">
+            <p>
+              <span className="font-bold">NURA is a new standard</span> - elevated, intentional activewear where sensorial design meets science, and skin health becomes a performance advantage.
+            </p>
+            <p>
+              We combine natural-tech materials with a skin care-level approach to support skin and total wellbeing, from movement to recovery.
+            </p>
+            <p>
+              Born from the desire to connect performance, health and nature, rooted in the Nordic heritage and wellness culture.
+            </p>
+          </div>
+
+          <div className="pt-4">
+            <a 
+              href="#science" 
+              className="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-foreground/20 pb-2 hover:border-foreground transition-all duration-300 inline-block"
+              onClick={() => trackEvent('manifesto_click')}
+            >
+              Read the manifesto
+            </a>
+          </div>
         </div>
       </div>
+      <WaitlistCTA onClick={onJoin} />
     </div>
   </section>
 );
 
-const ScienceSection = ({ innerRef }) => (
+const ScienceSection = ({ innerRef, onJoin }) => (
   <section ref={innerRef} id="science" className="py-24 md:py-40 bg-white overflow-hidden">
     <div className="max-w-7xl mx-auto px-6 md:px-12">
       {/* Section Header */}
@@ -202,7 +216,7 @@ const ScienceSection = ({ innerRef }) => (
       </div>
 
       {/* 3-Column Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 relative">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 relative mb-20 md:mb-32">
         {/* Vertical Dividers for Desktop */}
         <div className="hidden md:block absolute top-0 bottom-0 left-1/3 w-[1px] bg-foreground/5"></div>
         <div className="hidden md:block absolute top-0 bottom-0 left-2/3 w-[1px] bg-foreground/5"></div>
@@ -255,44 +269,48 @@ const ScienceSection = ({ innerRef }) => (
           </p>
         </div>
       </div>
+      <WaitlistCTA onClick={onJoin} />
     </div>
   </section>
 );
 
-const StorySection = ({ innerRef }) => (
+const StorySection = ({ innerRef, onJoin }) => (
   <section ref={innerRef} className="relative py-24 md:py-40 bg-[#1a1a1a] text-white overflow-hidden">
     {/* Background Texture/Image removed as requested */}
     
-    <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-      <div className="space-y-8">
-        <SectionTitle light>Our Story</SectionTitle>
-        <h2 className="section-headline text-left">
-          Born in the Nordics. <br />
-          <span className="italic">Built for wellbeing.</span>
-        </h2>
-        <div className="w-20 h-[1px] bg-white/30 my-6"></div>
-        <p className="text-gray-300 font-light leading-relaxed text-lg">
-          NURA is rooted in my Nordic upbringing where movement was a ritual, and wellbeing a way of living in nature.
-        </p>
-        <p className="text-gray-300 font-light leading-relaxed text-lg">
-          A decade in the beauty industry showed me how transparency and ingredient standards transformed skincare — while activewear remained dominated by synthetics, with little focus on what touches the skin.
-        </p>
-        <p className="text-gray-300 font-light leading-relaxed text-lg">
-          NURA was created to change that: health-led activewear, designed with a skincare-level approach to materials — supporting skin wellbeing, performance, and recovery.
-        </p>
-        <p className="text-white font-serif italic text-xl pt-4">
-          — Jenni Toft, Founder
-        </p>
-      </div>
+    <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16 md:mb-24">
+        <div className="space-y-8">
+          <SectionTitle light>Our Story</SectionTitle>
+          <h2 className="section-headline text-left">
+            Born in the Nordics. <br />
+            <span className="italic">Built for wellbeing.</span>
+          </h2>
+          <div className="w-20 h-[1px] bg-white/30 my-6"></div>
+          <p className="text-gray-300 font-light leading-relaxed text-lg">
+            NURA is rooted in my Nordic upbringing where movement was a ritual, and wellbeing a way of living in nature.
+          </p>
+          <p className="text-gray-300 font-light leading-relaxed text-lg">
+            A decade in the beauty industry showed me how transparency and ingredient standards transformed skincare — while activewear remained dominated by synthetics, with little focus on what touches the skin.
+          </p>
+          <p className="text-gray-300 font-light leading-relaxed text-lg">
+            NURA was created to change that: health-led activewear, designed with a skincare-level approach to materials — supporting skin wellbeing, performance, and recovery.
+          </p>
+          <p className="text-white font-serif italic text-xl pt-4">
+            — Jenni Toft, Founder
+          </p>
+        </div>
 
-      {/* Visual Element */}
-      <div className="h-[500px] md:h-[700px] w-full overflow-hidden relative shadow-2xl">
-         <img 
-           src="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2FJenni__8d8d3a59.jpg?alt=media&token=470644f6-e195-40f5-bcc3-aa1ce2167cec" 
-           alt="Jenni Toft - Founder" 
-           className="w-full h-full object-cover opacity-95 hover:scale-105 transition-transform duration-1000" 
-         />
+        {/* Visual Element */}
+        <div className="h-[500px] md:h-[700px] w-full overflow-hidden relative shadow-2xl">
+          <img 
+            src="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2FJenni__8d8d3a59.jpg?alt=media&token=470644f6-e195-40f5-bcc3-aa1ce2167cec" 
+            alt="Jenni Toft - Founder" 
+            className="w-full h-full object-cover opacity-95 hover:scale-105 transition-transform duration-1000" 
+          />
+        </div>
       </div>
+      <WaitlistCTA onClick={onJoin} />
     </div>
   </section>
 );
@@ -459,13 +477,18 @@ export default function App() {
     trackEvent('page_view', { page_title: 'NURA Landing Page' });
   }, []);
 
+  const scrollToCTA = () => {
+    ctaRef.current?.scrollIntoView({ behavior: 'smooth' });
+    trackEvent('waitlist_cta_click');
+  };
+
   return (
     <div className="min-h-screen">
       <Navbar refs={refs} />
       <Hero onExplore={() => philosophyRef.current?.scrollIntoView({ behavior: 'smooth' })} />
-      <PhilosophySection innerRef={philosophyRef} />
-      <ScienceSection innerRef={scienceRef} />
-      <StorySection innerRef={storyRef} />
+      <PhilosophySection innerRef={philosophyRef} onJoin={scrollToCTA} />
+      <ScienceSection innerRef={scienceRef} onJoin={scrollToCTA} />
+      <StorySection innerRef={storyRef} onJoin={scrollToCTA} />
       <CTASection innerRef={ctaRef} />
       <Footer />
     </div>
