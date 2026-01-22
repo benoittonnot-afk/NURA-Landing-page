@@ -1,5 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight, ChevronDown, Droplet, Wind, Shield, Leaf, Eye, FlaskConical } from 'lucide-react';
+import { blink } from './lib/blink';
+
+// Helper for GA Events
+const trackEvent = (eventName, params = {}) => {
+  // GA Tracking
+  if (window.gtag) {
+    window.gtag('event', eventName, params);
+  }
+  // Blink Analytics
+  blink.analytics.log(eventName, params);
+};
 
 // --- STYLES & FONTS ---
 const GlobalStyles = () => (
@@ -52,9 +63,10 @@ const Navbar = ({ refs }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollTo = (ref) => {
+  const scrollTo = (ref, label) => {
     setMobileMenuOpen(false);
     ref.current?.scrollIntoView({ behavior: 'smooth' });
+    trackEvent('nav_click', { section: label });
   };
 
   return (
@@ -65,19 +77,25 @@ const Navbar = ({ refs }) => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
-        <div className="text-2xl md:text-3xl font-serif font-semibold tracking-widest cursor-pointer z-50 mix-blend-difference text-black md:text-current">
+        <div 
+          className="text-2xl md:text-3xl font-serif font-semibold tracking-widest cursor-pointer z-50 mix-blend-difference text-black md:text-current"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            trackEvent('logo_click');
+          }}
+        >
            NURA
         </div>
 
         {/* Desktop Menu */}
         <div className={`hidden md:flex items-center space-x-12 text-sm uppercase tracking-widest font-light transition-colors duration-300 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
-          <button onClick={() => scrollTo(refs.philosophy)} className="hover:opacity-70 transition-opacity">Philosophy</button>
-          <button onClick={() => scrollTo(refs.science)} className="hover:opacity-70 transition-opacity">Science</button>
-          <button onClick={() => scrollTo(refs.story)} className="hover:opacity-70 transition-opacity">Story</button>
+          <button onClick={() => scrollTo(refs.philosophy, 'philosophy')} className="hover:opacity-70 transition-opacity">Philosophy</button>
+          <button onClick={() => scrollTo(refs.science, 'science')} className="hover:opacity-70 transition-opacity">Science</button>
+          <button onClick={() => scrollTo(refs.story, 'story')} className="hover:opacity-70 transition-opacity">Story</button>
           
           {/* Join Waitlist Button - Desktop */}
           <button 
-            onClick={() => scrollTo(refs.cta)} 
+            onClick={() => scrollTo(refs.cta, 'waitlist_cta_nav')} 
             className={`px-6 py-2 border ${isScrolled ? 'border-gray-800 hover:bg-gray-800 hover:text-white' : 'border-white hover:bg-white hover:text-black'} transition-all duration-300`}
           >
             Join the waitlist
@@ -95,10 +113,10 @@ const Navbar = ({ refs }) => {
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 animate-fade-in">
-          <button onClick={() => scrollTo(refs.philosophy)} className="text-2xl font-serif text-gray-900">Philosophy</button>
-          <button onClick={() => scrollTo(refs.science)} className="text-2xl font-serif text-gray-900">Science</button>
-          <button onClick={() => scrollTo(refs.story)} className="text-2xl font-serif text-gray-900">Story</button>
-          <button onClick={() => scrollTo(refs.cta)} className="text-xl font-serif text-white bg-gray-900 px-8 py-3 mt-4">Join Waitlist</button>
+          <button onClick={() => scrollTo(refs.philosophy, 'philosophy_mobile')} className="text-2xl font-serif text-gray-900">Philosophy</button>
+          <button onClick={() => scrollTo(refs.science, 'science_mobile')} className="text-2xl font-serif text-gray-900">Science</button>
+          <button onClick={() => scrollTo(refs.story, 'story_mobile')} className="text-2xl font-serif text-gray-900">Story</button>
+          <button onClick={() => scrollTo(refs.cta, 'waitlist_cta_mobile')} className="text-xl font-serif text-white bg-gray-900 px-8 py-3 mt-4">Join Waitlist</button>
         </div>
       )}
     </nav>
@@ -131,7 +149,10 @@ const Hero = ({ onExplore }) => (
         Natural-tech activewear rooted in the nordic values.
       </p>
       <button 
-        onClick={onExplore}
+        onClick={() => {
+          onExplore();
+          trackEvent('hero_explore_click');
+        }}
         className="group inline-flex items-center gap-2 text-sm uppercase tracking-widest border border-white/40 px-8 py-3 hover:bg-white hover:text-black transition-all duration-500 rounded-sm"
       >
         Discover
@@ -169,7 +190,11 @@ const PhilosophySection = ({ innerRef }) => (
         </div>
 
         <div className="pt-4">
-          <a href="#science" className="text-sm font-bold uppercase tracking-widest border-b border-gray-900 pb-1 hover:text-gray-600 hover:border-gray-600 transition-colors">
+          <a 
+            href="#science" 
+            className="text-sm font-bold uppercase tracking-widest border-b border-gray-900 pb-1 hover:text-gray-600 hover:border-gray-600 transition-colors"
+            onClick={() => trackEvent('manifesto_click')}
+          >
             Read the manifesto
           </a>
         </div>
@@ -286,9 +311,12 @@ const CTASection = ({ innerRef }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus('loading');
+    trackEvent('waitlist_submission_start', { email_provided: !!email });
+    
     setTimeout(() => {
       setStatus('success');
       setEmail('');
+      trackEvent('waitlist_submission_success');
     }, 1500);
   };
 
@@ -337,14 +365,38 @@ const CTASection = ({ innerRef }) => {
 const Footer = () => (
   <footer className="bg-white border-t border-gray-100 py-12 px-6">
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-      <div className="text-2xl font-serif font-bold tracking-widest text-gray-900">
+      <div 
+        className="text-2xl font-serif font-bold tracking-widest text-gray-900 cursor-pointer"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          trackEvent('footer_logo_click');
+        }}
+      >
         NURA
       </div>
       
       <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-400">
-        <a href="#" className="hover:text-gray-900 transition-colors">Instagram</a>
-        <a href="#" className="hover:text-gray-900 transition-colors">TikTok</a>
-        <a href="#" className="hover:text-gray-900 transition-colors">Contact</a>
+        <a 
+          href="#" 
+          className="hover:text-gray-900 transition-colors"
+          onClick={() => trackEvent('social_click', { platform: 'instagram' })}
+        >
+          Instagram
+        </a>
+        <a 
+          href="#" 
+          className="hover:text-gray-900 transition-colors"
+          onClick={() => trackEvent('social_click', { platform: 'tiktok' })}
+        >
+          TikTok
+        </a>
+        <a 
+          href="#" 
+          className="hover:text-gray-900 transition-colors"
+          onClick={() => trackEvent('social_click', { platform: 'contact' })}
+        >
+          Contact
+        </a>
       </div>
 
       <div className="text-[10px] text-gray-400">
@@ -366,6 +418,11 @@ export default function App() {
     story: storyRef,
     cta: ctaRef
   };
+
+  useEffect(() => {
+    // Initial pageview tracking
+    trackEvent('page_view', { page_title: 'NURA Landing Page' });
+  }, []);
 
   return (
     <div className="min-h-screen">
