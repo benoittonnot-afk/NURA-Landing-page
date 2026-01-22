@@ -14,3 +14,13 @@ export const blink = createClient({
   publishableKey: import.meta.env.VITE_BLINK_PUBLISHABLE_KEY,
   auth: { mode: 'managed' },
 })
+
+// Helper for Tracking Events (GA + Blink)
+export const trackEvent = (eventName, params = {}) => {
+  // GA Tracking
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', eventName, params);
+  }
+  // Blink Analytics
+  blink.analytics.log(eventName, params);
+};

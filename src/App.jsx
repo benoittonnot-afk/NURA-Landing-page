@@ -1,16 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight, ChevronDown, Droplet, Wind, Shield, Leaf, Eye, FlaskConical } from 'lucide-react';
-import { blink } from './lib/blink';
-
-// Helper for GA Events
-const trackEvent = (eventName, params = {}) => {
-  // GA Tracking
-  if (window.gtag) {
-    window.gtag('event', eventName, params);
-  }
-  // Blink Analytics
-  blink.analytics.log(eventName, params);
-};
+import { blink, trackEvent } from './lib/blink';
 
 // --- STYLES & FONTS ---
 const GlobalStyles = () => (
@@ -308,16 +298,27 @@ const CTASection = ({ innerRef }) => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle'); // idle, loading, success
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email) return;
+    
     setStatus('loading');
     trackEvent('waitlist_submission_start', { email_provided: !!email });
     
-    setTimeout(() => {
+    try {
+      await blink.db.create('waitlist', {
+        email: email
+      });
+      
       setStatus('success');
       setEmail('');
       trackEvent('waitlist_submission_success');
-    }, 1500);
+    } catch (error) {
+      console.error('Waitlist submission error:', error);
+      setStatus('idle');
+      trackEvent('waitlist_submission_error', { error: error.message });
+      alert('An error occurred. Please try again.');
+    }
   };
 
   return (
