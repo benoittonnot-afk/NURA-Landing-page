@@ -291,6 +291,7 @@ const StorySection = ({ innerRef }) => (
 
 const CTASection = ({ innerRef }) => {
   const [email, setEmail] = useState('');
+  const [preorder, setPreorder] = useState(false);
   const [status, setStatus] = useState('idle'); // idle, loading, success
 
   const handleSubmit = async (e) => {
@@ -298,11 +299,12 @@ const CTASection = ({ innerRef }) => {
     if (!email) return;
     
     setStatus('loading');
-    trackEvent('waitlist_submission_start', { email_provided: !!email });
+    trackEvent('waitlist_submission_start', { email_provided: !!email, preorder_intent: preorder });
     
     try {
       await blink.db.waitlist.create({
-        email: email
+        email: email,
+        preorderInterest: preorder ? 1 : 0
       });
       
       setStatus('success');
@@ -317,43 +319,74 @@ const CTASection = ({ innerRef }) => {
   };
 
   return (
-    <section ref={innerRef} className="py-24 md:py-32 bg-background text-center px-6">
-      <div className="max-w-3xl mx-auto space-y-8">
-        <h2 className="section-headline">
-          The next era of wellness <br />
-          <span className="italic">starts with what you wear.</span>
-        </h2>
-        <p className="text-foreground/60 font-light">
-          Be the first to experience NURA
-        </p>
+    <section ref={innerRef} className="py-32 md:py-48 bg-[#1a1a1a] text-white overflow-hidden relative">
+      {/* Decorative Texture - Very Subtle */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }}></div>
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center">
+        {/* Title Group */}
+        <div className="text-center space-y-6 mb-16">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] tracking-tight">
+            The next era of wellness <br />
+            <span className="italic text-white/90">starts with what you wear.</span>
+          </h2>
+          <p className="text-lg md:text-xl text-white/40 font-light tracking-wide">
+            Be the first to experience NURA.
+          </p>
+        </div>
         
         {status === 'success' ? (
-          <div className="p-4 bg-green-50 text-green-900 font-serif border border-green-100 animate-fade-in">
-            Welcome to NURA. We will be in touch shortly.
+          <div className="w-full max-w-xl p-8 bg-white/5 backdrop-blur-sm border border-white/10 text-center animate-fade-in">
+            <p className="font-serif italic text-2xl">Welcome to NURA.</p>
+            <p className="text-white/40 mt-2 font-light">We will be in touch shortly.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4">
-            <input 
-              type="email" 
-              required
-              placeholder="Your email address" 
-              className="flex-1 bg-transparent border-b border-gray-300 py-3 px-2 focus:outline-none focus:border-gray-900 transition-colors text-gray-900 font-light placeholder:text-gray-400"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button 
-              type="submit" 
-              disabled={status === 'loading'}
-              className="px-8 py-3 bg-gray-900 text-white font-serif uppercase tracking-widest text-xs hover:bg-gray-800 transition-colors disabled:opacity-50 whitespace-nowrap"
-            >
-              {status === 'loading' ? 'Joining...' : 'Join the experience'}
-            </button>
-          </form>
+          <div className="w-full max-w-2xl">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Input Group */}
+              <div className="relative flex flex-col md:flex-row items-end gap-6 border-b border-white/20 pb-4 focus-within:border-white/40 transition-colors">
+                <input 
+                  type="email" 
+                  required
+                  placeholder="Email address" 
+                  className="flex-1 bg-transparent py-2 px-0 focus:outline-none text-xl md:text-2xl font-light placeholder:text-white/20 text-white"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <button 
+                  type="submit" 
+                  disabled={status === 'loading'}
+                  className="px-8 py-3 bg-white text-black font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-gray-200 transition-all transform hover:scale-105 active:scale-95 disabled:opacity-50 whitespace-nowrap mb-1"
+                >
+                  {status === 'loading' ? 'Joining...' : 'Join the waitlist'}
+                </button>
+              </div>
+
+              {/* Checkbox Group */}
+              <div className="flex items-center gap-3 group cursor-pointer" onClick={() => setPreorder(!preorder)}>
+                <div className={`w-5 h-5 border rounded flex items-center justify-center transition-all ${preorder ? 'bg-white border-white' : 'border-white/20 group-hover:border-white/40'}`}>
+                  {preorder && <div className="w-2.5 h-2.5 bg-black rounded-sm"></div>}
+                </div>
+                <span className="text-xs md:text-sm text-white/30 font-light group-hover:text-white/50 transition-colors">
+                  I would consider pre-ordering when available
+                </span>
+              </div>
+            </form>
+          </div>
         )}
         
-        <p className="label-headline pt-8">
-          POWERED BY NATURE - DESIGNED FOR HEALTH - BACKED BY SCIENCE
-        </p>
+        {/* Bottom Slogans */}
+        <div className="mt-32 w-full grid grid-cols-1 md:grid-cols-3 gap-8 text-center border-t border-white/5 pt-16">
+          <div className="text-xs md:text-sm tracking-[0.3em] font-light text-white/60">
+            POWERED BY <span className="font-bold text-white">NATURE</span>
+          </div>
+          <div className="text-xs md:text-sm tracking-[0.3em] font-light text-white/60">
+            DESIGNED FOR <span className="font-bold text-white">HEALTH</span>
+          </div>
+          <div className="text-xs md:text-sm tracking-[0.3em] font-light text-white/60">
+            BACKED BY <span className="font-bold text-white">SCIENCE</span>
+          </div>
+        </div>
       </div>
     </section>
   );
