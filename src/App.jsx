@@ -19,7 +19,7 @@ const WaitlistCTA = ({ onClick, className = "" }) => (
       onClick={onClick}
       className="px-10 py-4 bg-white border border-gray-900/10 text-gray-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-sm transition-all duration-300 transform hover:scale-[1.05] hover:shadow-md active:scale-[0.98]"
     >
-      Join the waitlist
+      Join the experience
     </button>
   </div>
 );
@@ -381,7 +381,7 @@ const CTASection = ({ innerRef }) => {
                   disabled={status === 'loading'}
                   className="px-10 py-3.5 bg-black text-white font-bold uppercase tracking-[0.2em] text-[10px] rounded-full hover:bg-gray-800 transition-all transform hover:scale-105 active:scale-95 disabled:opacity-50 whitespace-nowrap mb-1"
                 >
-                  {status === 'loading' ? 'Joining...' : 'Join the waitlist'}
+                  {status === 'loading' ? 'Joining...' : 'Join the experience'}
                 </button>
               </div>
 
