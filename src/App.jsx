@@ -4,6 +4,15 @@ import { blink, trackEvent } from './lib/blink';
 
 // --- COMPOSANTS ---
 
+const SectionTitle = ({ children, className = "", light = false }) => (
+  <div className={`flex items-center gap-4 mb-8 ${className}`}>
+    <div className={`w-12 h-[1px] ${light ? 'bg-white/30' : 'bg-foreground/20'}`}></div>
+    <span className={`text-[10px] font-bold uppercase tracking-[0.4em] whitespace-nowrap ${light ? 'text-white/40' : 'text-foreground/40'}`}>
+      {children}
+    </span>
+  </div>
+);
+
 const Navbar = ({ refs }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -142,6 +151,7 @@ const PhilosophySection = ({ innerRef }) => (
 
       {/* Text Content - Position Right on Desktop (order-2) */}
       <div className="order-2 space-y-10">
+        <SectionTitle>The Philosophy</SectionTitle>
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-foreground tracking-tight">
           Skin care-level attention to what <span className="italic text-foreground/40">touches your skin.</span>
         </h2>
@@ -177,9 +187,7 @@ const ScienceSection = ({ innerRef }) => (
     <div className="max-w-7xl mx-auto px-6 md:px-12">
       {/* Section Header */}
       <div className="max-w-4xl mb-24 space-y-6">
-        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-foreground/40 animate-fade-in">
-          The Science of Nura
-        </p>
+        <SectionTitle>The Science</SectionTitle>
         <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] text-foreground tracking-tight">
           Health-led performance wear designed to support your body from <span className="italic text-foreground/40">movement to recovery.</span>
         </h2>
@@ -249,7 +257,7 @@ const StorySection = ({ innerRef }) => (
     
     <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
       <div className="space-y-8">
-        <span className="label-headline text-left block">Our Story</span>
+        <SectionTitle light>Our Story</SectionTitle>
         <h2 className="section-headline text-left">
           Born in the Nordics. <br />
           <span className="italic">Built for wellbeing.</span>
