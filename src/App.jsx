@@ -499,10 +499,10 @@ const ManifestoSection = () => {
             className={`manifesto-line flex flex-col items-center text-center space-y-4 md:space-y-8 w-full px-6 transition-all duration-700 ${isVisible ? 'animate' : ''} ${activeLine !== -1 && activeLine !== i ? 'opacity-30 scale-95' : 'opacity-100 scale-100'}`}
             style={{ animationDelay: `${i * 300}ms` }}
           >
-            <span className="text-[10px] md:text-xs font-medium tracking-[0.5em] text-warm-grey uppercase">
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-foreground/40 whitespace-nowrap">
               {line.label}
             </span>
-            <span className={`text-4xl md:text-6xl lg:text-7xl font-serif tracking-tight ${line.color} transition-all duration-700`}>
+            <span className={`text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight ${line.color} transition-all duration-700`}>
               <span className={`inline-block animate-underline ${underlineStates[i] ? 'active' : ''} ${completedUnderlines[i] ? 'completed' : ''}`}>
                 {line.keyword}
               </span>
