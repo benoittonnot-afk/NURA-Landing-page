@@ -319,44 +319,41 @@ const CTASection = ({ innerRef }) => {
   };
 
   return (
-    <section ref={innerRef} className="py-32 md:py-48 bg-[#1a1a1a] text-white overflow-hidden relative">
-      {/* Decorative Texture - Very Subtle */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }}></div>
-
+    <section ref={innerRef} className="py-32 md:py-48 bg-white text-foreground overflow-hidden relative">
       <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center">
         {/* Title Group */}
         <div className="text-center space-y-6 mb-16">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] tracking-tight">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight max-w-4xl mx-auto">
             The next era of wellness <br />
-            <span className="italic text-white/90">starts with what you wear.</span>
+            starts with <span className="italic text-foreground/40">what you wear.</span>
           </h2>
-          <p className="text-lg md:text-xl text-white/40 font-light tracking-wide">
+          <p className="text-base md:text-lg text-foreground/40 font-light tracking-wide">
             Be the first to experience NURA.
           </p>
         </div>
         
         {status === 'success' ? (
-          <div className="w-full max-w-xl p-8 bg-white/5 backdrop-blur-sm border border-white/10 text-center animate-fade-in">
+          <div className="w-full max-w-xl p-12 bg-foreground/[0.02] border border-foreground/5 text-center animate-fade-in">
             <p className="font-serif italic text-2xl">Welcome to NURA.</p>
-            <p className="text-white/40 mt-2 font-light">We will be in touch shortly.</p>
+            <p className="text-foreground/40 mt-2 font-light">We will be in touch shortly.</p>
           </div>
         ) : (
           <div className="w-full max-w-2xl">
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-10">
               {/* Input Group */}
-              <div className="relative flex flex-col md:flex-row items-end gap-6 border-b border-white/20 pb-4 focus-within:border-white/40 transition-colors">
+              <div className="relative flex flex-col md:flex-row items-end gap-6 border-b border-foreground/10 pb-4 focus-within:border-foreground/30 transition-colors">
                 <input 
                   type="email" 
                   required
                   placeholder="Email address" 
-                  className="flex-1 bg-transparent py-2 px-0 focus:outline-none text-xl md:text-2xl font-light placeholder:text-white/20 text-white"
+                  className="flex-1 bg-transparent py-2 px-0 focus:outline-none text-xl md:text-2xl font-light placeholder:text-foreground/20 text-foreground"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <button 
                   type="submit" 
                   disabled={status === 'loading'}
-                  className="px-8 py-3 bg-white text-black font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-gray-200 transition-all transform hover:scale-105 active:scale-95 disabled:opacity-50 whitespace-nowrap mb-1"
+                  className="px-10 py-3.5 bg-black text-white font-bold uppercase tracking-[0.2em] text-[10px] rounded-full hover:bg-gray-800 transition-all transform hover:scale-105 active:scale-95 disabled:opacity-50 whitespace-nowrap mb-1"
                 >
                   {status === 'loading' ? 'Joining...' : 'Join the waitlist'}
                 </button>
@@ -364,10 +361,10 @@ const CTASection = ({ innerRef }) => {
 
               {/* Checkbox Group */}
               <div className="flex items-center gap-3 group cursor-pointer" onClick={() => setPreorder(!preorder)}>
-                <div className={`w-5 h-5 border rounded flex items-center justify-center transition-all ${preorder ? 'bg-white border-white' : 'border-white/20 group-hover:border-white/40'}`}>
-                  {preorder && <div className="w-2.5 h-2.5 bg-black rounded-sm"></div>}
+                <div className={`w-5 h-5 border rounded flex items-center justify-center transition-all ${preorder ? 'bg-black border-black' : 'border-foreground/10 group-hover:border-foreground/30'}`}>
+                  {preorder && <div className="w-2.5 h-2.5 bg-white rounded-sm"></div>}
                 </div>
-                <span className="text-xs md:text-sm text-white/30 font-light group-hover:text-white/50 transition-colors">
+                <span className="text-[10px] md:text-xs text-foreground/30 font-light tracking-widest group-hover:text-foreground/50 transition-colors uppercase">
                   I would consider pre-ordering when available
                 </span>
               </div>
@@ -376,15 +373,15 @@ const CTASection = ({ innerRef }) => {
         )}
         
         {/* Bottom Slogans */}
-        <div className="mt-32 w-full grid grid-cols-1 md:grid-cols-3 gap-8 text-center border-t border-white/5 pt-16">
-          <div className="text-xs md:text-sm tracking-[0.3em] font-light text-white/60">
-            POWERED BY <span className="font-bold text-white">NATURE</span>
+        <div className="mt-32 w-full grid grid-cols-1 md:grid-cols-3 gap-8 text-center border-t border-foreground/[0.03] pt-16">
+          <div className="text-[10px] md:text-xs tracking-[0.4em] font-light text-foreground/40">
+            POWERED BY <span className="font-bold text-foreground">NATURE</span>
           </div>
-          <div className="text-xs md:text-sm tracking-[0.3em] font-light text-white/60">
-            DESIGNED FOR <span className="font-bold text-white">HEALTH</span>
+          <div className="text-[10px] md:text-xs tracking-[0.4em] font-light text-foreground/40">
+            DESIGNED FOR <span className="font-bold text-foreground">HEALTH</span>
           </div>
-          <div className="text-xs md:text-sm tracking-[0.3em] font-light text-white/60">
-            BACKED BY <span className="font-bold text-white">SCIENCE</span>
+          <div className="text-[10px] md:text-xs tracking-[0.4em] font-light text-foreground/40">
+            BACKED BY <span className="font-bold text-foreground">SCIENCE</span>
           </div>
         </div>
       </div>
