@@ -174,8 +174,8 @@ const PhilosophySection = ({ innerRef, onJoin }) => (
         {/* Text Content - Position Right on Desktop (order-2) */}
         <div className="order-2 flex flex-col items-center md:items-start text-center md:text-left space-y-10 w-full">
           <SectionTitle>The Philosophy</SectionTitle>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-stillness tracking-tight max-w-[380px] md:max-w-none mx-auto md:mx-0">
-            Skin care-level attention to what <span className="italic text-polar-sky/40">touches your skin.</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-foreground tracking-tight max-w-[380px] md:max-w-none mx-auto md:mx-0">
+            Skin care-level attention to what <span className="italic text-foreground/40">touches your skin.</span>
           </h2>
           
           <div className="space-y-8 text-base md:text-lg font-normal text-stillness/80 premium-body max-w-[380px] md:max-w-xl mx-auto md:mx-0">
@@ -277,7 +277,7 @@ const StorySection = ({ innerRef, onJoin }) => (
           <SectionTitle light>Our Story</SectionTitle>
           <h2 className="section-headline text-center md:text-left max-w-[380px] md:max-w-none mx-auto md:mx-0">
             Born in the Nordics. <br />
-            <span className="italic">Built for wellbeing.</span>
+            <span className="italic text-white/40">Built for wellbeing.</span>
           </h2>
           <div className="w-20 h-[1px] bg-white/30 my-6 mx-auto md:mx-0"></div>
           <div className="space-y-6 max-w-[380px] md:max-w-none mx-auto md:mx-0">
@@ -348,9 +348,9 @@ const CTASection = ({ innerRef }) => {
         <div className="text-center flex flex-col items-center space-y-6 mb-16">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight max-w-[380px] md:max-w-4xl mx-auto">
             The next era of wellness <br />
-            starts with <span className="italic text-polar-sky/40">what you wear.</span>
+            starts with <span className="italic text-foreground/40">what you wear.</span>
           </h2>
-          <p className="text-base md:text-lg text-stillness/40 font-normal tracking-wide max-w-[340px] md:max-w-none">
+          <p className="text-base md:text-lg text-foreground/40 font-normal tracking-wide max-w-[340px] md:max-w-none">
             Be the first to experience NURA.
           </p>
         </div>
