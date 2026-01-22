@@ -38,27 +38,35 @@ const Navbar = ({ refs }) => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
         <div 
-          className="text-2xl md:text-3xl font-serif font-semibold tracking-widest cursor-pointer z-50 mix-blend-difference text-black md:text-current"
+          className="cursor-pointer z-50 flex items-center"
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             trackEvent('logo_click');
           }}
         >
-           NURA
+          <img 
+            src="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2Flogo__9e9645c9.png?alt=media&token=9303b069-4127-40a6-9534-c163821b50fa" 
+            alt="NURA Logo" 
+            className={`h-5 md:h-6 object-contain transition-all duration-300 ${isScrolled ? 'brightness-0' : 'brightness-0 invert'}`}
+          />
         </div>
 
         {/* Desktop Menu */}
-        <div className={`hidden md:flex items-center space-x-12 text-sm uppercase tracking-widest font-light transition-colors duration-300 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
-          <button onClick={() => scrollTo(refs.philosophy, 'philosophy')} className="hover:opacity-70 transition-opacity">Philosophy</button>
-          <button onClick={() => scrollTo(refs.science, 'science')} className="hover:opacity-70 transition-opacity">Science</button>
-          <button onClick={() => scrollTo(refs.story, 'story')} className="hover:opacity-70 transition-opacity">Story</button>
+        <div className={`hidden md:flex items-center space-x-12 text-[10px] uppercase tracking-[0.4em] font-medium transition-colors duration-300 ${isScrolled ? 'text-gray-900' : 'text-white/80'}`}>
+          <button onClick={() => scrollTo(refs.philosophy, 'philosophy')} className="hover:text-white transition-colors">Philosophy</button>
+          <button onClick={() => scrollTo(refs.science, 'science')} className="hover:text-white transition-colors">Science</button>
+          <button onClick={() => scrollTo(refs.story, 'story')} className="hover:text-white transition-colors">Story</button>
           
           {/* Join Waitlist Button - Desktop */}
           <button 
             onClick={() => scrollTo(refs.cta, 'waitlist_cta_nav')} 
-            className={`px-6 py-2 border ${isScrolled ? 'border-gray-800 hover:bg-gray-800 hover:text-white' : 'border-white hover:bg-white hover:text-black'} transition-all duration-300`}
+            className={`px-8 py-2.5 border rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-300 ${
+              isScrolled 
+                ? 'border-gray-900/10 text-gray-900 hover:bg-gray-900 hover:text-white' 
+                : 'border-white/20 text-white/90 hover:bg-white hover:text-black'
+            }`}
           >
-            Join the waitlist
+            Join waitlist
           </button>
         </div>
 
@@ -73,10 +81,10 @@ const Navbar = ({ refs }) => {
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 animate-fade-in">
-          <button onClick={() => scrollTo(refs.philosophy, 'philosophy_mobile')} className="text-2xl font-serif text-gray-900">Philosophy</button>
-          <button onClick={() => scrollTo(refs.science, 'science_mobile')} className="text-2xl font-serif text-gray-900">Science</button>
-          <button onClick={() => scrollTo(refs.story, 'story_mobile')} className="text-2xl font-serif text-gray-900">Story</button>
-          <button onClick={() => scrollTo(refs.cta, 'waitlist_cta_mobile')} className="text-xl font-serif text-white bg-gray-900 px-8 py-3 mt-4">Join Waitlist</button>
+          <button onClick={() => scrollTo(refs.philosophy, 'philosophy_mobile')} className="text-xs uppercase tracking-[0.4em] font-medium text-gray-900">Philosophy</button>
+          <button onClick={() => scrollTo(refs.science, 'science_mobile')} className="text-xs uppercase tracking-[0.4em] font-medium text-gray-900">Science</button>
+          <button onClick={() => scrollTo(refs.story, 'story_mobile')} className="text-xs uppercase tracking-[0.4em] font-medium text-gray-900">Story</button>
+          <button onClick={() => scrollTo(refs.cta, 'waitlist_cta_mobile')} className="px-10 py-4 border border-gray-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-gray-900 mt-4">Join Waitlist</button>
         </div>
       )}
     </nav>
