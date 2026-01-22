@@ -120,19 +120,35 @@ const Hero = ({ onExplore }) => (
 
 const PhilosophySection = ({ innerRef }) => (
   <section ref={innerRef} className="py-24 md:py-40 bg-background relative overflow-hidden">
-    <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+    <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center">
       
+      {/* Image Content - Position Left on Desktop (order-1) */}
+      <div className="order-1 relative group">
+        <div className="relative aspect-[4/5] md:aspect-auto md:h-[600px] overflow-hidden">
+          <img 
+            src="/femme.png"
+            alt="Skin health activewear - Sweat on skin" 
+            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+          />
+        </div>
+        
+        {/* Text Overlay Box - Bottom Right */}
+        <div className="absolute -bottom-6 -right-6 md:-right-12 bg-[#d1d1d1] p-6 md:p-8 max-w-[280px] z-10">
+          <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] leading-relaxed text-black/80">
+            A NEW STANDARD FOR WHAT YOU WEAR ON YOUR SKIN.
+          </p>
+        </div>
+      </div>
+
       {/* Text Content - Position Right on Desktop (order-2) */}
-      <div className="order-2 md:order-2 space-y-8">
-        <span className="label-headline text-left block">Our Philosophy</span>
-        <h2 className="section-headline text-left">
-          Skin care-level <br />
-          <span className="italic">attention.</span>
+      <div className="order-2 space-y-10">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-foreground tracking-tight">
+          Skin care-level attention to what <span className="italic text-foreground/40">touches your skin.</span>
         </h2>
         
-        <div className="space-y-6 text-lg font-light text-foreground/70 leading-relaxed">
+        <div className="space-y-8 text-base md:text-lg font-light text-foreground/80 leading-relaxed max-w-xl">
           <p>
-            NURA is a new standard - elevated, intentional activewear where sensorial design meets science, and skin health becomes a performance advantage.
+            <span className="font-bold">NURA is a new standard</span> - elevated, intentional activewear where sensorial design meets science, and skin health becomes a performance advantage.
           </p>
           <p>
             We combine natural-tech materials with a skin care-level approach to support skin and total wellbeing, from movement to recovery.
@@ -145,29 +161,11 @@ const PhilosophySection = ({ innerRef }) => (
         <div className="pt-4">
           <a 
             href="#science" 
-            className="text-sm font-bold uppercase tracking-widest border-b border-gray-900 pb-1 hover:text-gray-600 hover:border-gray-600 transition-colors"
+            className="text-[10px] font-bold uppercase tracking-[0.3em] border-b border-foreground/20 pb-2 hover:border-foreground transition-all duration-300 inline-block"
             onClick={() => trackEvent('manifesto_click')}
           >
             Read the manifesto
           </a>
-        </div>
-      </div>
-
-      {/* Image Content - Position Left on Desktop (order-1) */}
-      <div className="order-1 md:order-1 relative h-[500px] md:h-[700px] group overflow-hidden">
-        <img 
-          src="/femme.png"
-          alt="Skin health activewear - Sweat on skin" 
-          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-90"
-        />
-        
-        {/* Text Overlay on Image */}
-        <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
-             <div className="text-white fade-up max-w-md">
-                 <h3 className="text-xl md:text-2xl font-serif mb-3 tracking-wide leading-tight">
-                    A NEW STANDARD FOR WHAT YOU WEAR ON YOUR SKIN.
-                 </h3>
-             </div>
         </div>
       </div>
     </div>
