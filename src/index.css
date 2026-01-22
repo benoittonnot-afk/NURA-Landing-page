@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --background: 40 20% 98%;
-  --foreground: 0 0% 10%;
+  --background: 33 33% 96%; /* Milkyway Frost */
+  --foreground: 0 0% 5%;    /* Dark Charcoal */
   
   --primary: 0 0% 100%;
   --primary-foreground: 0 0% 10%;
@@ -15,6 +15,13 @@
   --muted-foreground: 0 0% 40%;
   
   --border: 0 0% 90%;
+
+  /* Brand Colors */
+  --milkyway-frost: 33 33% 96%;
+  --lingonberry-noir: 2 41% 18%;
+  --polar-sky: 141 23% 24%;
+  --stillness: 0 7% 5%;
+  --arctic-sun: 10 80% 60%;
   
   --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
