@@ -17,7 +17,10 @@ const SectionTitle = ({ children, className = "", light = false }) => (
 const WaitlistCTA = ({ onClick, className = "mt-20 md:mt-24" }) => (
   <div className={`flex justify-center ${className}`}>
     <button
-      onClick={onClick}
+      onClick={() => {
+        onClick();
+        trackEvent('cta_click', { cta_location: 'mid_page', cta_label: 'join_experience' });
+      }}
       className="px-10 py-4 bg-white border border-gray-900/10 text-gray-900 rounded-full text-[11px] font-bold uppercase tracking-[0.25em] shadow-sm transition-all duration-300 transform hover:scale-[1.05] hover:shadow-md active:scale-[0.98]"
     >
       Join the experience
@@ -71,7 +74,10 @@ const Navbar = ({ refs }) => {
           
           {/* Join Waitlist Button - Desktop */}
           <button 
-            onClick={() => scrollTo(refs.cta, 'waitlist_cta_nav')} 
+            onClick={() => {
+              scrollTo(refs.cta, 'waitlist_cta_nav');
+              trackEvent('cta_click', { cta_location: 'navbar', cta_label: 'join_waitlist' });
+            }} 
             className={`px-8 py-2.5 border rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-300 ${
               isScrolled 
                 ? 'border-gray-900/10 text-gray-900 hover:bg-gray-900 hover:text-white' 
@@ -96,7 +102,15 @@ const Navbar = ({ refs }) => {
           <button onClick={() => scrollTo(refs.philosophy, 'philosophy_mobile')} className="text-xs uppercase tracking-[0.4em] font-bold text-gray-900">Philosophy</button>
           <button onClick={() => scrollTo(refs.science, 'science_mobile')} className="text-xs uppercase tracking-[0.4em] font-bold text-gray-900">Science</button>
           <button onClick={() => scrollTo(refs.story, 'story_mobile')} className="text-xs uppercase tracking-[0.4em] font-bold text-gray-900">Story</button>
-          <button onClick={() => scrollTo(refs.cta, 'waitlist_cta_mobile')} className="px-10 py-4 border border-gray-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-gray-900 mt-4">Join Waitlist</button>
+          <button 
+            onClick={() => {
+              scrollTo(refs.cta, 'waitlist_cta_mobile');
+              trackEvent('cta_click', { cta_location: 'navbar_mobile', cta_label: 'join_waitlist' });
+            }} 
+            className="px-10 py-4 border border-gray-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-gray-900 mt-4"
+          >
+            Join Waitlist
+          </button>
         </div>
       )}
     </nav>
@@ -321,7 +335,6 @@ const CTASection = ({ innerRef }) => {
     if (!email) return;
     
     setStatus('loading');
-    trackEvent('waitlist_submission_start', { email_provided: !!email, preorder_intent: preorder });
     
     try {
       await blink.db.waitlist.create({
@@ -331,12 +344,22 @@ const CTASection = ({ innerRef }) => {
       
       setStatus('success');
       setEmail('');
-      trackEvent('waitlist_submission_success');
+      trackEvent('email_submitted', { 
+        source: 'waitlist_form', 
+        has_preorder_interest: preorder 
+      });
     } catch (error) {
       console.error('Waitlist submission error:', error);
       setStatus('idle');
-      trackEvent('waitlist_submission_error', { error: error.message });
       alert('An error occurred. Please try again.');
+    }
+  };
+
+  const handleCheckboxToggle = () => {
+    const nextState = !preorder;
+    setPreorder(nextState);
+    if (nextState) {
+      trackEvent('preorder_interest_checked');
     }
   };
 
@@ -383,7 +406,7 @@ const CTASection = ({ innerRef }) => {
               </div>
 
               {/* Checkbox Group */}
-              <div className="flex items-center justify-center md:justify-start gap-3 group cursor-pointer w-full" onClick={() => setPreorder(!preorder)}>
+              <div className="flex items-center justify-center md:justify-start gap-3 group cursor-pointer w-full" onClick={handleCheckboxToggle}>
                 <div className={`w-5 h-5 border rounded flex items-center justify-center transition-all flex-shrink-0 ${preorder ? 'bg-black border-black' : 'border-stillness/10 group-hover:border-stillness/30'}`}>
                   {preorder && <div className="w-2.5 h-2.5 bg-white rounded-sm"></div>}
                 </div>
@@ -604,18 +627,18 @@ export default function App() {
     trackEvent('page_view', { page_title: 'NURA Landing Page' });
   }, []);
 
-  const scrollToCTA = () => {
+  const scrollToCTA = (location = 'mid_page') => {
     ctaRef.current?.scrollIntoView({ behavior: 'smooth' });
-    trackEvent('waitlist_cta_click');
+    trackEvent('cta_click', { cta_location: location, cta_label: 'join_experience' });
   };
 
   return (
     <div className="min-h-screen">
       <Navbar refs={refs} />
       <Hero onExplore={() => philosophyRef.current?.scrollIntoView({ behavior: 'smooth' })} />
-      <PhilosophySection innerRef={philosophyRef} onJoin={scrollToCTA} />
-      <ScienceSection innerRef={scienceRef} onJoin={scrollToCTA} />
-      <StorySection innerRef={storyRef} onJoin={scrollToCTA} />
+      <PhilosophySection innerRef={philosophyRef} onJoin={() => scrollToCTA('philosophy')} />
+      <ScienceSection innerRef={scienceRef} onJoin={() => scrollToCTA('science')} />
+      <StorySection innerRef={storyRef} onJoin={() => scrollToCTA('story')} />
       <CTASection innerRef={ctaRef} />
       <ManifestoSection />
       <Footer />
