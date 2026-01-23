@@ -17,10 +17,7 @@ const SectionTitle = ({ children, className = "", light = false }) => (
 const WaitlistCTA = ({ onClick, className = "mt-20 md:mt-24" }) => (
   <div className={`flex justify-center ${className}`}>
     <button
-      onClick={() => {
-        onClick();
-        trackEvent('cta_click', { cta_location: 'mid_page', cta_label: 'join_experience' });
-      }}
+      onClick={onClick}
       className="px-10 py-4 bg-white border border-gray-900/10 text-gray-900 rounded-full text-[11px] font-bold uppercase tracking-[0.25em] shadow-sm transition-all duration-300 transform hover:scale-[1.05] hover:shadow-md active:scale-[0.98]"
     >
       Join the experience
@@ -105,7 +102,7 @@ const Navbar = ({ refs }) => {
           <button 
             onClick={() => {
               scrollTo(refs.cta, 'waitlist_cta_mobile');
-              trackEvent('cta_click', { cta_location: 'navbar_mobile', cta_label: 'join_waitlist' });
+              trackEvent('cta_click', { cta_location: 'navbar', cta_label: 'join_waitlist' });
             }} 
             className="px-10 py-4 border border-gray-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-gray-900 mt-4"
           >
@@ -146,7 +143,7 @@ const Hero = ({ onExplore }) => (
       <button 
         onClick={() => {
           onExplore();
-          trackEvent('hero_explore_click');
+          trackEvent('cta_click', { cta_location: 'hero', cta_label: 'join_experience' });
         }}
         className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white/40 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full"
       >
@@ -399,6 +396,7 @@ const CTASection = ({ innerRef }) => {
                 <button 
                   type="submit" 
                   disabled={status === 'loading'}
+                  onClick={() => trackEvent('cta_click', { cta_location: 'footer', cta_label: 'join_experience' })}
                   className="px-10 py-3.5 bg-black text-white font-bold uppercase tracking-[0.2em] text-[10px] rounded-full hover:bg-gray-800 transition-all transform hover:scale-105 active:scale-95 disabled:opacity-50 whitespace-nowrap mb-1"
                 >
                   {status === 'loading' ? 'Joining...' : 'Join the experience'}
@@ -556,7 +554,7 @@ const Footer = () => (
             className="text-2xl md:text-3xl font-serif font-bold tracking-widest text-gray-900 cursor-pointer"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
-              trackEvent('footer_logo_click');
+              trackEvent('logo_click');
             }}
           >
             NURA<span className="text-lingonberry-noir">®</span>
