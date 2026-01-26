@@ -177,29 +177,29 @@ const PhilosophySection = ({ innerRef, onJoin }) => (
           </div>
           
           {/* Text Overlay Box - Bottom Right */}
-          <div className="absolute -bottom-6 -right-2 md:-right-12 bg-[#d1d1d1] p-6 md:p-8 max-w-[240px] md:max-w-[280px] z-10 shadow-sm">
+          <div className="absolute -bottom-6 -right-2 md:-right-12 bg-[#d1d1d1] p-6 md:p-8 max-w-[200px] md:max-w-[220px] z-10 shadow-sm">
             <p className="text-[10px] md:text-xs font-normal uppercase tracking-[0.2em] leading-relaxed text-black/80 text-left">
-              A NEW STANDARD FOR WHAT YOU WEAR ON YOUR SKIN.
+              WHAT TOUCHES<br />YOUR SKIN MATTERS.
             </p>
           </div>
         </div>
 
         {/* Text Content - Position Right on Desktop (order-2) */}
         <div className="order-2 flex flex-col items-center md:items-start text-center md:text-left space-y-10 w-full">
-          <SectionTitle>The Philosophy</SectionTitle>
-          <h2 className="text-2xl md:text-5xl lg:text-6xl font-serif leading-tight text-foreground tracking-tight max-w-[500px] md:max-w-none mx-auto md:mx-0">
-            Skin care-level attention to what <span className="italic text-foreground/40">touches your skin.</span>
+          <h2 className="text-3xl md:text-5xl lg:text-7xl font-serif leading-[1.1] text-foreground tracking-tight max-w-[500px] md:max-w-none mx-auto md:mx-0">
+            Pioneering<br />
+            <span className="italic text-foreground/80">health-led activewear.</span>
           </h2>
           
-          <div className="space-y-8 text-base md:text-lg font-normal text-stillness/80 premium-body max-w-[380px] md:max-w-xl mx-auto md:mx-0">
-            <p>
-              <span className="font-bold">NURA is a new standard</span> - elevated, intentional activewear where sensorial design meets science, and skin health becomes a performance advantage.
+          <div className="space-y-6 text-base md:text-lg font-normal text-stillness/80 premium-body max-w-[380px] md:max-w-xl mx-auto md:mx-0">
+            <p className="leading-relaxed">
+              Rooted in Nordic wellbeing, NURA connects nature and performance through a skin care–level approach to activewear.
             </p>
-            <p>
-              We combine natural-tech materials with a skin care-level approach to support skin and total wellbeing, from movement to recovery.
+            <p className="leading-relaxed">
+              Guided by natural fibres, material science, and a deep respect for skin comfort.
             </p>
-            <p>
-              Born from the desire to connect performance, health and nature, rooted in the Nordic heritage and wellness culture.
+            <p className="leading-relaxed">
+              Each piece is developed to support the body across the full performance cycle from movement to recovery.
             </p>
           </div>
         </div>
