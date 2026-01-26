@@ -4,13 +4,13 @@ import { blink, trackEvent } from './lib/blink';
 
 // --- COMPOSANTS ---
 
-const SectionTitle = ({ children, className = "", light = false }) => (
+const SectionTitle = ({ children, className = "" }) => (
   <div className={`flex items-center justify-center md:justify-start gap-4 mb-8 ${className}`}>
-    <div className={`w-12 h-[1px] ${light ? 'bg-white/30' : 'bg-foreground/20'}`}></div>
-    <span className={`text-[10px] font-bold uppercase tracking-[0.4em] whitespace-nowrap font-sans ${light ? 'text-white/40' : 'text-foreground/40'}`}>
+    <div className="w-12 h-[1px] bg-foreground/20"></div>
+    <span className="text-[10px] font-bold uppercase tracking-[0.4em] whitespace-nowrap font-sans text-foreground/40">
       {children}
     </span>
-    <div className={`md:hidden w-12 h-[1px] ${light ? 'bg-white/30' : 'bg-foreground/20'}`}></div>
+    <div className="md:hidden w-12 h-[1px] bg-foreground/20"></div>
   </div>
 );
 
@@ -114,7 +114,7 @@ const Navbar = ({ refs }) => {
 
 const Hero = ({ onExplore }) => (
   <header className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-    {/* Background Video */}
+    {/* Background Video with subtle overlay for Navbar contrast */}
     <div className="absolute inset-0 z-0">
       <video
         autoPlay
@@ -127,28 +127,31 @@ const Hero = ({ onExplore }) => (
       >
         Your browser does not support the video tag.
       </video>
+      <div className="absolute inset-0 bg-black/20"></div>
     </div>
 
-    {/* Hero Content */}
-    <div className="relative z-10 text-center text-white px-4 fade-up max-w-6xl mx-auto flex flex-col items-center">
-      <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 font-sans text-white">
-        HEALTH-LED ACTIVEWEAR
-      </span>
-      <h1 className="hero-headline mb-8 text-white max-w-[90vw] md:max-w-[1150px] mx-auto">
-        What touches your skin shapes how you <span className="italic text-white">perform and recover.</span>
-      </h1>
-      <p className="premium-body text-white mb-12 max-w-[340px] md:max-w-2xl mx-auto text-center">
-        Grounded in Nordic wellbeing.
-      </p>
-      <button 
-        onClick={() => {
-          onExplore();
-          trackEvent('cta_click', { cta_location: 'hero', cta_label: 'discover' });
-        }}
-        className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full font-sans text-white"
-      >
-        Discover
-      </button>
+    {/* Hero Content - Light Semi-opaque Container */}
+    <div className="relative z-10 fade-up max-w-6xl mx-auto px-6">
+      <div className="bg-white/90 backdrop-blur-md p-10 md:p-20 flex flex-col items-center text-center shadow-sm max-w-5xl mx-auto">
+        <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 font-sans text-foreground/40">
+          HEALTH-LED ACTIVEWEAR
+        </span>
+        <h1 className="hero-headline mb-8 max-w-4xl mx-auto">
+          What touches your skin shapes how you <span className="italic-grey">perform and recover.</span>
+        </h1>
+        <p className="premium-body mb-12 max-w-xl mx-auto text-center">
+          Grounded in Nordic wellbeing.
+        </p>
+        <button 
+          onClick={() => {
+            onExplore();
+            trackEvent('cta_click', { cta_location: 'hero', cta_label: 'discover' });
+          }}
+          className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-foreground px-10 py-4 hover:bg-foreground hover:text-white transition-all duration-500 rounded-full font-sans text-foreground"
+        >
+          Discover
+        </button>
+      </div>
     </div>
 
     {/* Scroll Indicator */}
@@ -180,7 +183,7 @@ const PhilosophySection = ({ innerRef, onJoin }) => (
           </div>
           
           {/* Text Overlay Box - Bottom Right */}
-          <div className="absolute -bottom-6 -right-2 md:-right-12 bg-[#d1d1d1] p-6 md:p-8 max-w-[200px] md:max-w-[220px] z-10 shadow-sm">
+          <div className="absolute -bottom-6 -right-2 md:-right-12 bg-white/90 backdrop-blur-sm p-6 md:p-8 max-w-[200px] md:max-w-[220px] z-10 shadow-sm">
             <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] leading-relaxed text-black/80 text-left font-sans">
               WHAT TOUCHES<br />YOUR SKIN MATTERS.
             </p>
@@ -236,12 +239,12 @@ const ScienceSection = ({ innerRef, onJoin }) => (
             <Droplet size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors font-sans">
+            <h3 className="sub-headline uppercase tracking-[0.3em] font-bold font-sans">
               NATURAL-TECH
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
-          <p className="premium-body text-foreground/60 max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
+          <p className="premium-body max-w-[340px] md:max-w-[280px] mx-auto md:mx-0">
             Natural-based materials, enhanced through modern science. Engineered for <span className="font-bold text-foreground/80">high performance</span> and lasting comfort, from training to recovery.
           </p>
         </div>
@@ -252,12 +255,12 @@ const ScienceSection = ({ innerRef, onJoin }) => (
             <FlaskConical size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors font-sans">
+            <h3 className="sub-headline uppercase tracking-[0.3em] font-bold font-sans">
               INGREDIENT FOCUS
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
-          <p className="premium-body text-foreground/60 max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
+          <p className="premium-body max-w-[340px] md:max-w-[280px] mx-auto md:mx-0">
             Clarity around what each piece is made of, and why. <span className="font-bold text-foreground/80">Material compositions</span> are developed to support <span className="font-bold text-foreground/80">skin comfort and wellbeing.</span>
           </p>
         </div>
@@ -268,12 +271,12 @@ const ScienceSection = ({ innerRef, onJoin }) => (
             <Shield size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors font-sans">
+            <h3 className="sub-headline uppercase tracking-[0.3em] font-bold font-sans">
               MATERIAL SAFETY
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
-          <p className="premium-body text-foreground/60 max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
+          <p className="premium-body max-w-[340px] md:max-w-[280px] mx-auto md:mx-0">
             Guided by a <span className="font-bold text-foreground/80">material safety–first mindset</span> and developed with experts. Materials are evaluated for skin comfort, performance, and durability.
           </p>
         </div>
@@ -285,29 +288,28 @@ const ScienceSection = ({ innerRef, onJoin }) => (
 );
 
 const StorySection = ({ innerRef, onJoin }) => (
-  <section ref={innerRef} className="relative py-24 md:py-40 bg-[#1a1a1a] text-white overflow-hidden">
-    <div className="section-fade-top" />
+  <section ref={innerRef} className="relative py-24 md:py-40 bg-background overflow-hidden">
     <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-12 flex flex-col items-center">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16 md:mb-24 w-full">
         <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8 w-full">
-          <SectionTitle light>Our Story</SectionTitle>
+          <SectionTitle>Our Story</SectionTitle>
           <h2 className="section-headline">
             Born in the Nordics. <br />
             <span className="italic-grey">Built for wellbeing.</span>
           </h2>
-          <div className="w-20 h-[1px] bg-white/30 my-6 mx-auto md:mx-0"></div>
+          <div className="w-20 h-[1px] bg-foreground/10 my-6 mx-auto md:mx-0"></div>
           <div className="space-y-6 max-w-[380px] md:max-w-none mx-auto md:mx-0">
-            <p className="premium-body text-gray-300">
+            <p className="premium-body">
               NURA is rooted in my Nordic upbringing where movement was a ritual, and wellbeing a way of living in nature.
             </p>
-            <p className="premium-body text-gray-300">
+            <p className="premium-body">
               A decade in the beauty industry showed me how transparency and ingredient standards transformed skincare, while activewear remained dominated by synthetics, with little focus on what touches the skin.
             </p>
-            <p className="premium-body text-gray-300">
+            <p className="premium-body">
               NURA was created to change that: health-led activewear, designed with a skincare-level approach to materials, supporting skin wellbeing, performance, and recovery.
             </p>
           </div>
-          <p className="text-white font-sans italic text-lg pt-4 text-center md:text-left">
+          <p className="text-foreground font-sans italic text-lg pt-4 text-center md:text-left">
             Jenni Toft, Founder
           </p>
         </div>
@@ -375,7 +377,7 @@ const CTASection = ({ innerRef }) => {
             The next era of wellness <br />
             starts with <span className="italic-grey">what you wear.</span>
           </h2>
-          <p className="premium-body text-foreground/40 text-center">
+          <p className="premium-body text-center">
             Be the first to experience NURA.
           </p>
         </div>
@@ -444,7 +446,7 @@ const ManifestoSection = () => {
             <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-foreground/20 whitespace-nowrap font-sans">
               {line.label}
             </span>
-            <span className="text-xl md:text-2xl font-serif tracking-tight text-foreground/30">
+            <span className="text-xl md:text-2xl font-serif tracking-tight text-foreground/60">
               {line.keyword}
             </span>
           </div>
