@@ -13,7 +13,6 @@
 
   --warm-grey: 0 0% 29%; /* #4A4A4A */
   --light-grey: 0 0% 82%; /* #D1D1D1 */
-  --cream: 33 31% 94%; /* #F5F1EB - a soft cream */
   
   --muted: 0 0% 60%;
   --muted-foreground: 0 0% 40%;
@@ -72,23 +71,20 @@ body {
 
 @layer components {
   .section-headline {
-    @apply text-3xl md:text-4xl lg:text-[40px] font-serif leading-[1.1] tracking-tight text-center md:text-left text-foreground;
+    @apply text-3xl md:text-5xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center md:text-left;
   }
   
   .hero-headline {
-    @apply text-3xl md:text-4xl lg:text-[40px] font-serif leading-[1.1] tracking-tight text-center text-foreground;
-  }
-  
-  .sub-headline {
-    @apply text-xl md:text-2xl font-serif tracking-tight text-foreground;
+    @apply text-3xl md:text-5xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center;
   }
   
   .italic-grey {
-    @apply italic text-foreground/50;
+    @apply italic;
+    color: hsl(var(--light-grey));
   }
   
   .premium-body {
-    @apply font-sans text-base leading-[1.8] text-foreground/70 text-center md:text-left;
+    @apply font-sans text-base md:text-lg leading-[1.8] md:leading-relaxed text-center md:text-left;
   }
   
   .label-headline {
@@ -103,6 +99,10 @@ body {
     @apply max-w-[380px] mx-auto px-4 md:max-w-none md:mx-0 md:px-0;
   }
   
+  .premium-body {
+    @apply leading-[1.8] md:leading-relaxed text-center md:text-left;
+  }
+
   .mobile-heading-center {
     @apply text-center md:text-left mx-auto md:mx-0;
   }
