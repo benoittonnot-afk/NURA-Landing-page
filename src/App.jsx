@@ -303,21 +303,21 @@ const StorySection = ({ innerRef, onJoin }) => (
               NURA is rooted in my Nordic upbringing where movement was a ritual, and wellbeing a way of living in nature.
             </p>
             <p className="premium-body text-gray-300">
-              A decade in the beauty industry showed me how transparency and ingredient standards transformed skincare — while activewear remained dominated by synthetics, with little focus on what touches the skin.
+              A decade in the beauty industry showed me how transparency and ingredient standards transformed skincare, while activewear remained dominated by synthetics, with little focus on what touches the skin.
             </p>
             <p className="premium-body text-gray-300">
-              NURA was created to change that: health-led activewear, designed with a skincare-level approach to materials — supporting skin wellbeing, performance, and recovery.
+              NURA was created to change that: health-led activewear, designed with a skincare-level approach to materials, supporting skin wellbeing, performance, and recovery.
             </p>
           </div>
           <p className="text-white font-sans italic text-lg pt-4 text-center md:text-left">
-            — Jenni Toft, Founder
+            Jenni Toft, Founder
           </p>
         </div>
 
         {/* Visual Element */}
         <div className="h-[400px] md:h-[700px] w-full max-w-[380px] md:max-w-none overflow-hidden relative shadow-2xl mx-auto">
           <img 
-            src="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2FJenni__8d8d3a59.jpg?alt=media&token=470644f6-e195-40f5-bcc3-aa1ce2167cec" 
+            src="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2FWhatsAppImage2026-01-26at40503PM__224ad26d.JPG?alt=media&token=a961a687-c5d4-4af3-ae69-31e5e592df57" 
             alt="Jenni Toft - Founder" 
             className="w-full h-full object-cover opacity-95 hover:scale-105 transition-transform duration-1000" 
           />
