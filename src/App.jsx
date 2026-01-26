@@ -133,21 +133,24 @@ const Hero = ({ onExplore }) => (
 
     {/* Hero Content */}
     <div className="relative z-10 text-center text-white px-4 fade-up max-w-6xl mx-auto flex flex-col items-center">
-      <h1 className="hero-headline mb-8 text-off-white max-w-[380px] md:max-w-none mx-auto">
-        Performance starts <br />
-        <span className="italic">with health.</span>
+      <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 opacity-80">
+        HEALTH-LED ACTIVEWEAR
+      </span>
+      <h1 className="hero-headline mb-8 text-off-white max-w-[380px] md:max-w-[1000px] mx-auto">
+        What touches your skin shapes how you <br className="hidden md:block" />
+        <span className="italic">perform and recover.</span>
       </h1>
       <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-[340px] md:max-w-2xl mx-auto font-normal leading-relaxed text-off-white text-center">
-        Natural tech activewear designed to support skin health and full performance cycle, inspired by Nordic values
+        Grounded in Nordic wellbeing.
       </p>
       <button 
         onClick={() => {
           onExplore();
-          trackEvent('cta_click', { cta_location: 'hero', cta_label: 'join_experience' });
+          trackEvent('cta_click', { cta_location: 'hero', cta_label: 'join_waitlist' });
         }}
         className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white/40 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full"
       >
-        Discover
+        Join the waitlist
       </button>
     </div>
 
