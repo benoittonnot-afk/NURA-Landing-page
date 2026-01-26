@@ -22,7 +22,7 @@ export default {
       },
       fontFamily: {
         serif: ['Playfair Display', 'serif'],
-        sans: ['Montserrat', 'sans-serif'],
+        sans: ['Avenir Next', 'Avenir', 'Montserrat', 'sans-serif'],
       },
     },
   },

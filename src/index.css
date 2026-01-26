@@ -12,6 +12,7 @@
   --primary-foreground: 0 0% 100%;
 
   --warm-grey: 0 0% 29%; /* #4A4A4A */
+  --light-grey: 0 0% 82%; /* #D1D1D1 */
   
   --muted: 0 0% 60%;
   --muted-foreground: 0 0% 40%;
@@ -70,11 +71,20 @@ body {
 
 @layer components {
   .section-headline {
-    @apply text-2xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center md:text-center;
+    @apply text-3xl md:text-5xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center md:text-left;
   }
   
   .hero-headline {
-    @apply text-3xl md:text-5xl lg:text-6xl font-serif leading-[1.2] tracking-tight text-center;
+    @apply text-3xl md:text-5xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center;
+  }
+  
+  .italic-grey {
+    @apply italic;
+    color: hsl(var(--light-grey));
+  }
+  
+  .premium-body {
+    @apply font-sans text-base md:text-lg leading-[1.8] md:leading-relaxed text-center md:text-left;
   }
   
   .label-headline {
