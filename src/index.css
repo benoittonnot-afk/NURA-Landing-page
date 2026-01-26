@@ -71,11 +71,11 @@ body {
 
 @layer components {
   .section-headline {
-    @apply text-3xl md:text-5xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center md:text-left;
+    @apply text-[32px] md:text-[54px] lg:text-[80px] font-serif leading-[1.1] tracking-tight text-center md:text-left;
   }
   
   .hero-headline {
-    @apply text-3xl md:text-5xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center;
+    @apply text-[32px] md:text-[54px] lg:text-[80px] font-serif leading-[1.1] tracking-tight text-center;
   }
   
   .science-subheadline {
