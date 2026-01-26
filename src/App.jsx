@@ -56,11 +56,9 @@ const Navbar = ({ refs }) => {
             trackEvent('logo_click');
           }}
         >
-          <img 
-            src="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2Flogo__9e9645c9.png?alt=media&token=9303b069-4127-40a6-9534-c163821b50fa" 
-            alt="NURA Logo" 
-            className={`h-7 md:h-10 object-contain transition-all duration-300 ${isScrolled ? 'brightness-0' : 'brightness-0 invert'}`}
-          />
+          <span className={`text-2xl md:text-4xl font-serif font-bold tracking-widest transition-all duration-300 ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
+            NURA
+          </span>
         </div>
 
         {/* Desktop Menu */}
@@ -464,13 +462,13 @@ const Footer = () => (
         {/* Brand Column */}
         <div className="md:col-span-6 flex flex-col items-center md:items-start space-y-6 text-center md:text-left">
           <div 
-            className="text-2xl md:text-3xl font-serif font-bold tracking-widest text-gray-900 cursor-pointer"
+            className="text-2xl md:text-4xl font-serif font-bold tracking-widest text-gray-900 cursor-pointer"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
               trackEvent('logo_click');
             }}
           >
-            NURA<span className="text-lingonberry-noir">®</span>
+            NURA
           </div>
           <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-foreground/40 leading-loose font-sans">
             NATURAL-TECH<br />ACTIVEWEAR
