@@ -222,7 +222,7 @@ const ScienceSection = ({ innerRef, onJoin }) => (
       <div className="max-w-4xl mb-24 flex flex-col items-center md:items-start text-center md:text-left space-y-6 mx-auto md:mx-0">
         <SectionTitle>The Science</SectionTitle>
         <h2 className="section-headline">
-          Health-led performance wear designed to support your body from <span className="italic-grey">movement to recovery.</span>
+          Nature meets <span className="italic-grey">modern science.</span>
         </h2>
       </div>
 
@@ -232,51 +232,51 @@ const ScienceSection = ({ innerRef, onJoin }) => (
         <div className="hidden md:block absolute top-0 bottom-0 left-1/3 w-[1px] bg-foreground/5"></div>
         <div className="hidden md:block absolute top-0 bottom-0 left-2/3 w-[1px] bg-foreground/5"></div>
 
-        {/* Pillar 1: Ingredient Mindset */}
+        {/* Pillar 1: Natural-Tech */}
         <div className="group flex flex-col items-center md:items-start text-center md:text-left space-y-8 transition-all duration-500 hover:translate-y-[-4px]">
           <div className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground/[0.03] group-hover:bg-foreground/5 transition-colors duration-500 mx-auto md:mx-0">
             <Droplet size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors font-sans">
-              Skin-Led Ingredient<br />Mindset
+              NATURAL-TECH
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
           <p className="premium-body text-foreground/60 max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
-            A skin-first approach to materials and construction, designed for comfort in heat, sweat and movement, and to support recovery.
+            Natural-based materials, enhanced through modern science. Engineered for <span className="font-bold text-foreground/80">high performance</span> and lasting comfort, from training to recovery.
           </p>
         </div>
 
-        {/* Pillar 2: Natural-Tech Performance */}
+        {/* Pillar 2: Ingredient Focus */}
         <div className="group flex flex-col items-center md:items-start text-center md:text-left space-y-8 transition-all duration-500 hover:translate-y-[-4px]">
           <div className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground/[0.03] group-hover:bg-foreground/5 transition-colors duration-500 mx-auto md:mx-0">
             <FlaskConical size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors font-sans">
-              Natural-Tech<br />Performance
+              INGREDIENT FOCUS
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
           <p className="premium-body text-foreground/60 max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
-            The finest natural materials, enhanced by modern science - engineered for high function and aligned with health and nature.
+            Clarity around what each piece is made of, and why. <span className="font-bold text-foreground/80">Material compositions</span> are developed to support <span className="font-bold text-foreground/80">skin comfort and wellbeing.</span>
           </p>
         </div>
 
-        {/* Pillar 3: Transparency */}
+        {/* Pillar 3: Material Safety */}
         <div className="group flex flex-col items-center md:items-start text-center md:text-left space-y-8 transition-all duration-500 hover:translate-y-[-4px]">
           <div className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground/[0.03] group-hover:bg-foreground/5 transition-colors duration-500 mx-auto md:mx-0">
             <Shield size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors font-sans">
-              Safety<br />& Transparency
+              MATERIAL SAFETY
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
           <p className="premium-body text-foreground/60 max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
-            Fabrics-level transparency - what it’s made of, and why. Material choices guided by integrity, safety, and microplastic-conscious design.
+            Guided by a <span className="font-bold text-foreground/80">material safety–first mindset</span> and developed with experts. Materials are evaluated for skin comfort, performance, and durability.
           </p>
         </div>
       </div>
