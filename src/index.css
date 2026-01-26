@@ -18,7 +18,14 @@
   
   --border: 0 0% 90%;
   
+  --off-white: 0 0% 98%;
   --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
 @layer utilities {

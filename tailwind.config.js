@@ -14,6 +14,7 @@ export default {
           foreground: 'hsl(var(--primary-foreground))',
         },
         'warm-grey': 'hsl(var(--warm-grey))',
+        'off-white': 'hsl(var(--off-white))',
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
