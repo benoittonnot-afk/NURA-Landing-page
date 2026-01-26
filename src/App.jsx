@@ -329,6 +329,7 @@ const StorySection = ({ innerRef, onJoin }) => (
 
 const CTASection = ({ innerRef }) => {
   const [email, setEmail] = useState('');
+  const [marketingOptIn, setMarketingOptIn] = useState(false);
   const [preorder, setPreorder] = useState(false);
   const [status, setStatus] = useState('idle'); // idle, loading, success
 
@@ -341,27 +342,21 @@ const CTASection = ({ innerRef }) => {
     try {
       await blink.db.waitlist.create({
         email: email,
-        preorderInterest: preorder ? 1 : 0
+        preorderInterest: preorder ? 1 : 0,
+        marketingOptIn: marketingOptIn ? 1 : 0
       });
       
       setStatus('success');
       setEmail('');
       trackEvent('email_submitted', { 
         source: 'waitlist_form', 
-        has_preorder_interest: preorder 
+        has_preorder_interest: preorder,
+        marketing_opt_in: marketingOptIn
       });
     } catch (error) {
       console.error('Waitlist submission error:', error);
       setStatus('idle');
       alert('An error occurred. Please try again.');
-    }
-  };
-
-  const handleCheckboxToggle = () => {
-    const nextState = !preorder;
-    setPreorder(nextState);
-    if (nextState) {
-      trackEvent('preorder_interest_checked');
     }
   };
 
@@ -387,7 +382,7 @@ const CTASection = ({ innerRef }) => {
           </div>
         ) : (
           <div className="w-full max-w-2xl mx-auto">
-            <form onSubmit={handleSubmit} className="space-y-10 flex flex-col items-center">
+            <form onSubmit={handleSubmit} className="space-y-12 flex flex-col items-center">
               {/* Input Group */}
               <div className="relative flex flex-col md:flex-row items-center md:items-end gap-6 border-b border-stillness/10 pb-4 focus-within:border-stillness/30 transition-colors w-full">
                 <input 
@@ -409,13 +404,44 @@ const CTASection = ({ innerRef }) => {
               </div>
 
               {/* Checkbox Group */}
-              <div className="flex items-center justify-center md:justify-start gap-3 group cursor-pointer w-full" onClick={handleCheckboxToggle}>
-                <div className={`w-5 h-5 border rounded flex items-center justify-center transition-all flex-shrink-0 ${preorder ? 'bg-black border-black' : 'border-stillness/10 group-hover:border-stillness/30'}`}>
-                  {preorder && <div className="w-2.5 h-2.5 bg-white rounded-sm"></div>}
+              <div className="flex flex-col gap-6 w-full max-w-md">
+                {/* Marketing Opt-in */}
+                <div 
+                  className="flex items-start gap-4 group cursor-pointer py-2" 
+                  onClick={() => setMarketingOptIn(!marketingOptIn)}
+                >
+                  <div className={`w-6 h-6 border rounded-sm flex items-center justify-center transition-all flex-shrink-0 mt-0.5 ${marketingOptIn ? 'bg-black border-black' : 'border-black/20 group-hover:border-black/40'}`}>
+                    {marketingOptIn && (
+                      <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 5L4.5 8.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    )}
+                  </div>
+                  <span className="text-[10px] md:text-xs text-stillness/60 font-medium tracking-widest group-hover:text-stillness transition-colors uppercase text-left leading-relaxed">
+                    I agree to receive updates, early access, and product news from NURA.
+                  </span>
                 </div>
-                <span className="text-[10px] md:text-xs text-stillness/30 font-normal tracking-widest group-hover:text-stillness/50 transition-colors uppercase text-left">
-                  I would consider pre-ordering when available
-                </span>
+
+                {/* Pre-order Interest */}
+                <div 
+                  className="flex items-start gap-4 group cursor-pointer py-2" 
+                  onClick={() => {
+                    const nextState = !preorder;
+                    setPreorder(nextState);
+                    if (nextState) trackEvent('preorder_interest_checked');
+                  }}
+                >
+                  <div className={`w-6 h-6 border rounded-sm flex items-center justify-center transition-all flex-shrink-0 mt-0.5 ${preorder ? 'bg-black border-black' : 'border-black/20 group-hover:border-black/40'}`}>
+                    {preorder && (
+                      <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 5L4.5 8.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    )}
+                  </div>
+                  <span className="text-[10px] md:text-xs text-stillness/60 font-medium tracking-widest group-hover:text-stillness transition-colors uppercase text-left leading-relaxed">
+                    I would consider pre-ordering when available
+                  </span>
+                </div>
               </div>
             </form>
           </div>
