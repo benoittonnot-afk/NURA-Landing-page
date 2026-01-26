@@ -114,78 +114,51 @@ const Navbar = ({ refs }) => {
   );
 };
 
-const Hero = ({ onExplore }) => {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const videoRef = useRef(null);
+const Hero = ({ onExplore }) => (
+  <header className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    {/* Background Video */}
+    <div className="absolute inset-0 z-0">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover brightness-[0.7]"
+        src="/video_home.mp4"
+      >
+        Your browser does not support the video tag.
+      </video>
+      <div className="absolute inset-0 bg-black/30" />
+    </div>
 
-  useEffect(() => {
-    // If video is already loaded (from cache etc)
-    if (videoRef.current && videoRef.current.readyState >= 3) {
-      setVideoLoaded(true);
-    }
-  }, []);
+    {/* Hero Content */}
+    <div className="relative z-10 text-center text-white px-4 fade-up max-w-6xl mx-auto flex flex-col items-center">
+      <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 opacity-80">
+        HEALTH-LED ACTIVEWEAR
+      </span>
+      <h1 className="hero-headline mb-8 text-off-white max-w-[90vw] md:max-w-[1100px] mx-auto">
+        What touches your skin shapes how you <span className="italic">perform and recover.</span>
+      </h1>
+      <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-[340px] md:max-w-2xl mx-auto font-normal leading-relaxed text-off-white text-center">
+        Grounded in Nordic wellbeing.
+      </p>
+      <button 
+        onClick={() => {
+          onExplore();
+          trackEvent('cta_click', { cta_location: 'hero', cta_label: 'discover' });
+        }}
+        className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white/40 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full"
+      >
+        Discover
+      </button>
+    </div>
 
-  return (
-    <header className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/poster.png"
-          onLoadedData={() => setVideoLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-            videoLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-          src="/video_home.mp4"
-        >
-          Your browser does not support the video tag.
-        </video>
-        
-        {/* Static Poster for immediate visual - disappears when video loads */}
-        <div 
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-in-out ${
-            videoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
-          }`}
-          style={{ backgroundImage: 'url(/poster.png)' }}
-        />
-        
-        {/* Very light overlay to maintain readability but keep video bright */}
-        <div className="absolute inset-0 bg-black/15" />
-      </div>
-
-      {/* Hero Content */}
-      <div className="relative z-10 text-center text-white px-4 fade-up max-w-[1400px] mx-auto flex flex-col items-center">
-        <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 opacity-80">
-          HEALTH-LED ACTIVEWEAR
-        </span>
-        <h1 className="hero-headline mb-8 text-off-white max-w-[95vw] md:max-w-[1250px] mx-auto text-balance">
-          What touches your skin shapes how you <span className="italic">perform and recover.</span>
-        </h1>
-        <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-[340px] md:max-w-2xl mx-auto font-normal leading-relaxed text-off-white text-center">
-          Grounded in Nordic wellbeing.
-        </p>
-        <button 
-          onClick={() => {
-            onExplore();
-            trackEvent('cta_click', { cta_location: 'hero', cta_label: 'discover' });
-          }}
-          className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white/40 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full"
-        >
-          Discover
-        </button>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/70">
-        <ChevronDown size={24} strokeWidth={1} />
-      </div>
-    </header>
-  );
-};
+    {/* Scroll Indicator */}
+    <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/70">
+      <ChevronDown size={24} strokeWidth={1} />
+    </div>
+  </header>
+);
 
 const PhilosophySection = ({ innerRef, onJoin }) => (
   <section ref={innerRef} className="py-24 md:py-40 bg-background relative overflow-hidden">
