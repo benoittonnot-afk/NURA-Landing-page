@@ -123,26 +123,23 @@ const Hero = ({ onExplore }) => (
         loop
         muted
         playsInline
-        preload="auto"
-        poster="/poster.png"
-        className="w-full h-full object-cover brightness-[1.1] contrast-[1.05] saturate-[1.1]"
+        className="w-full h-full object-cover brightness-[0.7]"
         src="/video_home.mp4"
       >
         Your browser does not support the video tag.
       </video>
-      <div className="absolute inset-0 bg-black/10" />
+      <div className="absolute inset-0 bg-black/30" />
     </div>
 
     {/* Hero Content */}
-    <div className="relative z-10 text-center text-white px-4 fade-up max-w-7xl mx-auto flex flex-col items-center">
-      <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-8 opacity-90">
+    <div className="relative z-10 text-center text-white px-4 fade-up max-w-6xl mx-auto flex flex-col items-center">
+      <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 opacity-80">
         HEALTH-LED ACTIVEWEAR
       </span>
-      <h1 className="hero-headline mb-8 text-white max-w-[90vw] md:max-w-[1200px] mx-auto">
-        What touches your skin shapes how you <br className="hidden md:block" />
-        <span className="italic">perform and recover.</span>
+      <h1 className="hero-headline mb-8 text-off-white max-w-[90vw] md:max-w-[1100px] mx-auto">
+        What touches your skin shapes how you <span className="italic">perform and recover.</span>
       </h1>
-      <p className="text-sm md:text-base lg:text-lg opacity-90 mb-12 max-w-[340px] md:max-w-2xl mx-auto font-normal tracking-wide leading-relaxed text-white text-center">
+      <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-[340px] md:max-w-2xl mx-auto font-normal leading-relaxed text-off-white text-center">
         Grounded in Nordic wellbeing.
       </p>
       <button 
@@ -150,7 +147,7 @@ const Hero = ({ onExplore }) => (
           onExplore();
           trackEvent('cta_click', { cta_location: 'hero', cta_label: 'discover' });
         }}
-        className="group inline-flex items-center gap-2 text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold border border-white/60 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full bg-white/5 backdrop-blur-sm"
+        className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white/40 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full"
       >
         Discover
       </button>

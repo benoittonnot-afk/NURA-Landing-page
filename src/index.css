@@ -74,7 +74,7 @@ body {
   }
   
   .hero-headline {
-    @apply text-4xl md:text-7xl lg:text-[85px] font-serif leading-[1.05] tracking-tight text-center;
+    @apply text-3xl md:text-7xl lg:text-8xl font-serif leading-[1.1] tracking-tight text-center md:text-center;
   }
   
   .label-headline {
@@ -99,8 +99,6 @@ body {
 }
 
 .fade-up {
-  opacity: 0;
-  transform: translateY(30px);
   animation: fade-up 1s ease-out forwards;
 }
 
