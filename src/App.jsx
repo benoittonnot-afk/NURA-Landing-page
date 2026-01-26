@@ -115,7 +115,7 @@ const Navbar = ({ refs }) => {
 };
 
 const Hero = ({ onExplore }) => (
-  <header className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+  <header className="relative h-screen w-full overflow-hidden flex flex-col items-center">
     {/* Background Video */}
     <div className="absolute inset-0 z-0">
       <video
@@ -123,23 +123,25 @@ const Hero = ({ onExplore }) => (
         loop
         muted
         playsInline
-        className="w-full h-full object-cover brightness-[0.7]"
-        src="/video_home.mp4"
+        preload="auto"
+        poster="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2Fimage__68fe4a53.png?alt=media&token=a16a2a40-5a33-49fc-a408-0a8d724bc0ca"
+        className="w-full h-full object-cover"
+        src="https://firebasestorage.googleapis.com/v0/b/blink-451505.firebasestorage.app/o/user-uploads%2FluYznwj5FOOUdMuQoDW7iLIaT7G3%2F13465429_1920_1080_30fps__159badf1.mp4?alt=media&token=db7d228b-6ddc-4ad9-9f3d-3b0318abe54c"
       >
         Your browser does not support the video tag.
       </video>
-      <div className="absolute inset-0 bg-black/30" />
     </div>
 
     {/* Hero Content */}
-    <div className="relative z-10 text-center text-white px-4 fade-up max-w-6xl mx-auto flex flex-col items-center">
-      <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 opacity-80">
+    <div className="relative z-10 text-center text-white px-4 fade-up max-w-[1400px] w-full mx-auto pt-[20vh] md:pt-[25vh] flex flex-col items-center">
+      <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-10 opacity-90">
         HEALTH-LED ACTIVEWEAR
       </span>
-      <h1 className="hero-headline mb-8 text-off-white max-w-[90vw] md:max-w-[1100px] mx-auto">
-        What touches your skin shapes how you <span className="italic">perform and recover.</span>
+      <h1 className="hero-headline mb-16 text-white max-w-[95vw] md:max-w-[1200px] mx-auto leading-[1.05] tracking-[-0.02em]">
+        What touches your skin shapes how you <br />
+        <span className="italic">perform and recover.</span>
       </h1>
-      <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-[340px] md:max-w-2xl mx-auto font-normal leading-relaxed text-off-white text-center">
+      <p className="text-sm md:text-base lg:text-lg opacity-90 mb-12 font-normal leading-relaxed text-white tracking-[0.05em]">
         Grounded in Nordic wellbeing.
       </p>
       <button 
@@ -147,7 +149,7 @@ const Hero = ({ onExplore }) => (
           onExplore();
           trackEvent('cta_click', { cta_location: 'hero', cta_label: 'discover' });
         }}
-        className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white/40 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full"
+        className="group inline-flex items-center gap-2 text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold border border-white/60 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full"
       >
         Discover
       </button>

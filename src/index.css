@@ -74,7 +74,7 @@ body {
   }
   
   .hero-headline {
-    @apply text-3xl md:text-7xl lg:text-8xl font-serif leading-[1.1] tracking-tight text-center md:text-center;
+    @apply text-4xl md:text-8xl lg:text-9xl font-serif leading-[1.05] tracking-tight text-center md:text-center;
   }
   
   .label-headline {
