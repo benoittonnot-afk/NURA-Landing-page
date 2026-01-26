@@ -78,13 +78,17 @@ body {
     @apply text-3xl md:text-5xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center;
   }
   
+  .science-subheadline {
+    @apply text-base md:text-xl font-sans font-medium uppercase tracking-[0.3em] text-foreground/90;
+  }
+  
   .italic-grey {
     @apply italic;
     color: hsl(var(--light-grey));
   }
   
   .premium-body {
-    @apply font-sans text-base md:text-lg leading-[1.8] md:leading-relaxed text-center md:text-left;
+    @apply font-sans text-base md:text-lg leading-[1.8] md:leading-relaxed text-center md:text-left font-normal;
   }
   
   .label-headline {
@@ -97,10 +101,6 @@ body {
 
   .mobile-centered-container {
     @apply max-w-[380px] mx-auto px-4 md:max-w-none md:mx-0 md:px-0;
-  }
-  
-  .premium-body {
-    @apply leading-[1.8] md:leading-relaxed text-center md:text-left;
   }
 
   .mobile-heading-center {

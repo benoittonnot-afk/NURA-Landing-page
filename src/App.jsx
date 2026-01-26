@@ -236,13 +236,13 @@ const ScienceSection = ({ innerRef, onJoin }) => (
             <Droplet size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors font-sans">
+            <h3 className="science-subheadline">
               NATURAL-TECH
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
           <p className="premium-body text-foreground/60 max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
-            Natural-based materials, enhanced through modern science. Engineered for <span className="font-bold text-foreground/80">high performance</span> and lasting comfort, from training to recovery.
+            Natural-based materials, enhanced through modern science. Engineered for high performance and lasting comfort, from training to recovery.
           </p>
         </div>
 
@@ -252,13 +252,13 @@ const ScienceSection = ({ innerRef, onJoin }) => (
             <FlaskConical size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors font-sans">
+            <h3 className="science-subheadline">
               INGREDIENT FOCUS
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
           <p className="premium-body text-foreground/60 max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
-            Clarity around what each piece is made of, and why. <span className="font-bold text-foreground/80">Material compositions</span> are developed to support <span className="font-bold text-foreground/80">skin comfort and wellbeing.</span>
+            Clarity around what each piece is made of, and why. Material compositions are developed to support skin comfort and wellbeing.
           </p>
         </div>
 
@@ -268,13 +268,13 @@ const ScienceSection = ({ innerRef, onJoin }) => (
             <Shield size={20} strokeWidth={1.5} className="text-foreground/60 group-hover:text-foreground transition-colors duration-500" />
           </div>
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/90 group-hover:text-foreground transition-colors font-sans">
+            <h3 className="science-subheadline">
               MATERIAL SAFETY
             </h3>
             <div className="h-[1px] w-8 bg-foreground/20 group-hover:w-16 transition-all duration-700 mx-auto md:mx-0"></div>
           </div>
           <p className="premium-body text-foreground/60 max-w-[340px] md:max-w-[280px] group-hover:text-foreground/80 transition-colors mx-auto md:mx-0">
-            Guided by a <span className="font-bold text-foreground/80">material safety–first mindset</span> and developed with experts. Materials are evaluated for skin comfort, performance, and durability.
+            Guided by a material safety–first mindset and developed with experts. Materials are evaluated for skin comfort, performance, and durability.
           </p>
         </div>
       </div>
