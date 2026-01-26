@@ -136,9 +136,8 @@ const Hero = ({ onExplore }) => (
       <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 opacity-80">
         HEALTH-LED ACTIVEWEAR
       </span>
-      <h1 className="hero-headline mb-8 text-off-white max-w-[500px] md:max-w-[1100px] mx-auto">
-        What touches your skin shapes how you <br className="hidden md:block" />
-        <span className="italic">perform and recover.</span>
+      <h1 className="hero-headline mb-8 text-off-white max-w-[90vw] md:max-w-[1100px] mx-auto">
+        What touches your skin shapes how you <span className="italic">perform and recover.</span>
       </h1>
       <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-[340px] md:max-w-2xl mx-auto font-normal leading-relaxed text-off-white text-center">
         Grounded in Nordic wellbeing.
@@ -188,7 +187,7 @@ const PhilosophySection = ({ innerRef, onJoin }) => (
         {/* Text Content - Position Right on Desktop (order-2) */}
         <div className="order-2 flex flex-col items-center md:items-start text-center md:text-left space-y-10 w-full">
           <SectionTitle>The Philosophy</SectionTitle>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-foreground tracking-tight max-w-[380px] md:max-w-none mx-auto md:mx-0">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-foreground tracking-tight max-w-[500px] md:max-w-none mx-auto md:mx-0">
             Skin care-level attention to what <span className="italic text-foreground/40">touches your skin.</span>
           </h2>
           
@@ -217,7 +216,7 @@ const ScienceSection = ({ innerRef, onJoin }) => (
       {/* Section Header */}
       <div className="max-w-4xl mb-24 flex flex-col items-center md:items-start text-center md:text-left space-y-6 mx-auto md:mx-0">
         <SectionTitle>The Science</SectionTitle>
-        <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] text-foreground tracking-tight max-w-[380px] md:max-w-none">
+        <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] text-foreground tracking-tight max-w-[600px] md:max-w-none">
           Health-led performance wear designed to support your body from <span className="italic text-foreground/40">movement to recovery.</span>
         </h2>
       </div>
@@ -289,7 +288,7 @@ const StorySection = ({ innerRef, onJoin }) => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16 md:mb-24 w-full">
         <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8 w-full">
           <SectionTitle light>Our Story</SectionTitle>
-          <h2 className="section-headline text-center md:text-left max-w-[380px] md:max-w-none mx-auto md:mx-0">
+          <h2 className="section-headline text-center md:text-left max-w-[500px] md:max-w-none mx-auto md:mx-0">
             Born in the Nordics. <br />
             <span className="italic text-white/40">Built for wellbeing.</span>
           </h2>
@@ -369,7 +368,7 @@ const CTASection = ({ innerRef }) => {
       <div className="relative z-10 max-w-5xl mx-auto px-4 flex flex-col items-center">
         {/* Title Group */}
         <div className="text-center flex flex-col items-center space-y-6 mb-16">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight max-w-[380px] md:max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight max-w-[600px] md:max-w-4xl mx-auto">
             The next era of wellness <br />
             starts with <span className="italic text-foreground/40">what you wear.</span>
           </h2>

@@ -70,11 +70,11 @@ body {
 
 @layer components {
   .section-headline {
-    @apply text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center md:text-center;
+    @apply text-3xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight text-center md:text-center;
   }
   
   .hero-headline {
-    @apply text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] tracking-tight text-center md:text-center;
+    @apply text-[2.25rem] md:text-7xl lg:text-8xl font-serif leading-[1.1] tracking-tight text-center md:text-center;
   }
   
   .label-headline {
