@@ -99,6 +99,8 @@ body {
 }
 
 .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
   animation: fade-up 1s ease-out forwards;
 }
 
