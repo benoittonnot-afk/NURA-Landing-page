@@ -136,7 +136,7 @@ const Hero = ({ onExplore }) => (
       <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 opacity-80">
         HEALTH-LED ACTIVEWEAR
       </span>
-      <h1 className="hero-headline mb-8 text-off-white max-w-[380px] md:max-w-[1000px] mx-auto">
+      <h1 className="hero-headline mb-8 text-off-white max-w-[500px] md:max-w-[1100px] mx-auto">
         What touches your skin shapes how you <br className="hidden md:block" />
         <span className="italic">perform and recover.</span>
       </h1>
@@ -146,11 +146,11 @@ const Hero = ({ onExplore }) => (
       <button 
         onClick={() => {
           onExplore();
-          trackEvent('cta_click', { cta_location: 'hero', cta_label: 'join_waitlist' });
+          trackEvent('cta_click', { cta_location: 'hero', cta_label: 'discover' });
         }}
         className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white/40 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full"
       >
-        Join the waitlist
+        Discover
       </button>
     </div>
 
