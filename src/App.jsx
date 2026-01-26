@@ -136,7 +136,7 @@ const Hero = ({ onExplore }) => (
       <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 opacity-80">
         HEALTH-LED ACTIVEWEAR
       </span>
-      <h1 className="hero-headline mb-8 text-off-white max-w-[90vw] md:max-w-[1100px] mx-auto">
+      <h1 className="hero-headline mb-8 text-off-white max-w-[90vw] md:max-w-[1150px] mx-auto">
         What touches your skin shapes how you <span className="italic">perform and recover.</span>
       </h1>
       <p className="text-sm md:text-base lg:text-lg opacity-80 mb-12 max-w-[340px] md:max-w-2xl mx-auto font-normal leading-relaxed text-off-white text-center">
