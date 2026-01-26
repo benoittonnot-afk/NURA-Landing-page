@@ -123,12 +123,12 @@ const Hero = ({ onExplore }) => (
         loop
         muted
         playsInline
-        className="w-full h-full object-cover brightness-[0.7]"
+        preload="auto"
+        className="w-full h-full object-cover"
         src="/video_home.mp4"
       >
         Your browser does not support the video tag.
       </video>
-      <div className="absolute inset-0 bg-black/30" />
     </div>
 
     {/* Hero Content */}
