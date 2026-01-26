@@ -69,7 +69,6 @@ const Navbar = ({ refs }) => {
           <button 
             onClick={() => {
               scrollTo(refs.cta, 'waitlist_cta_nav');
-              trackEvent('cta_click', { cta_location: 'navbar', cta_label: 'join_waitlist' });
             }} 
             className={`px-8 py-2.5 border rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-300 font-sans ${
               isScrolled 
@@ -98,7 +97,6 @@ const Navbar = ({ refs }) => {
           <button 
             onClick={() => {
               scrollTo(refs.cta, 'waitlist_cta_mobile');
-              trackEvent('cta_click', { cta_location: 'navbar', cta_label: 'join_waitlist' });
             }} 
             className="px-10 py-4 border border-gray-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] text-gray-900 mt-4"
           >
@@ -141,7 +139,6 @@ const Hero = ({ onExplore }) => (
       <button 
         onClick={() => {
           onExplore();
-          trackEvent('cta_click', { cta_location: 'hero', cta_label: 'join_experience' });
         }}
         className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full font-sans text-white"
       >
@@ -393,7 +390,6 @@ const CTASection = ({ innerRef }) => {
                 <button 
                   type="submit" 
                   disabled={status === 'loading'}
-                  onClick={() => trackEvent('cta_click', { cta_location: 'footer', cta_label: 'join_experience' })}
                   className="px-10 py-3.5 bg-black text-white font-bold uppercase tracking-[0.2em] text-[10px] rounded-full hover:bg-gray-800 transition-all transform hover:scale-105 active:scale-95 disabled:opacity-50 whitespace-nowrap mb-1"
                 >
                   {status === 'loading' ? 'Joining...' : 'Join the experience'}
@@ -552,13 +548,11 @@ export default function App() {
   };
 
   useEffect(() => {
-    // Initial pageview tracking
-    trackEvent('page_view', { page_title: 'NURA Landing Page' });
+    // No events triggered on page view per strict requirement
   }, []);
 
   const scrollToCTA = (location = 'mid_page') => {
     ctaRef.current?.scrollIntoView({ behavior: 'smooth' });
-    trackEvent('cta_click', { cta_location: location, cta_label: 'join_experience' });
   };
 
   return (
