@@ -38,7 +38,6 @@ const Navbar = ({ refs }) => {
   const scrollTo = (ref, label) => {
     setMobileMenuOpen(false);
     ref.current?.scrollIntoView({ behavior: 'smooth' });
-    trackEvent('nav_click', { section: label });
   };
 
   return (
@@ -53,7 +52,6 @@ const Navbar = ({ refs }) => {
           className="cursor-pointer z-50 flex items-center"
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            trackEvent('logo_click');
           }}
         >
           <span className={`text-2xl md:text-4xl font-serif font-bold tracking-widest transition-all duration-300 ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
@@ -143,7 +141,7 @@ const Hero = ({ onExplore }) => (
       <button 
         onClick={() => {
           onExplore();
-          trackEvent('cta_click', { cta_location: 'hero', cta_label: 'discover' });
+          trackEvent('cta_click', { cta_location: 'hero', cta_label: 'join_experience' });
         }}
         className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full font-sans text-white"
       >
@@ -348,10 +346,9 @@ const CTASection = ({ innerRef }) => {
       
       setStatus('success');
       setEmail('');
-      trackEvent('email_submitted', { 
-        source: 'waitlist_form', 
-        has_preorder_interest: preorder,
-        marketing_opt_in: marketingOptIn
+      trackEvent('waitlist_submission_success', { 
+        preorder_intent: preorder,
+        marketing_optin: marketingOptIn
       });
     } catch (error) {
       console.error('Waitlist submission error:', error);
@@ -428,7 +425,6 @@ const CTASection = ({ innerRef }) => {
                   onClick={() => {
                     const nextState = !preorder;
                     setPreorder(nextState);
-                    if (nextState) trackEvent('preorder_interest_checked');
                   }}
                 >
                   <div className={`w-6 h-6 border rounded-sm flex items-center justify-center transition-all flex-shrink-0 mt-0.5 ${preorder ? 'bg-black border-black' : 'border-black/20 group-hover:border-black/40'}`}>
@@ -491,7 +487,6 @@ const Footer = () => (
             className="text-2xl md:text-4xl font-serif font-bold tracking-widest text-gray-900 cursor-pointer"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
-              trackEvent('logo_click');
             }}
           >
             NURA
@@ -509,7 +504,6 @@ const Footer = () => (
           <a 
             href="mailto:jenni@nurasport.com" 
             className="text-sm md:text-base font-normal text-foreground/80 hover:text-foreground transition-colors block font-sans"
-            onClick={() => trackEvent('footer_contact_click')}
           >
             jenni@nurasport.com
           </a>
@@ -536,8 +530,8 @@ const Footer = () => (
         </div>
         
         <div className="flex gap-8 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/30 justify-center md:justify-end font-sans">
-          <a href="#" className="hover:text-foreground transition-colors" onClick={() => trackEvent('footer_privacy_click')}>Privacy</a>
-          <a href="#" className="hover:text-foreground transition-colors" onClick={() => trackEvent('footer_terms_click')}>Terms</a>
+          <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
+          <a href="#" className="hover:text-foreground transition-colors">Terms</a>
         </div>
       </div>
     </div>
