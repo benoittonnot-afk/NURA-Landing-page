@@ -133,13 +133,13 @@ const Hero = ({ onExplore }) => (
 
     {/* Hero Content */}
     <div className="relative z-10 text-center text-white px-4 fade-up max-w-6xl mx-auto flex flex-col items-center">
-      <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 opacity-80 font-sans">
+      <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mb-6 font-sans text-white">
         HEALTH-LED ACTIVEWEAR
       </span>
-      <h1 className="hero-headline mb-8 text-off-white max-w-[90vw] md:max-w-[1150px] mx-auto">
-        What touches your skin shapes how you <span className="italic-grey">perform and recover.</span>
+      <h1 className="hero-headline mb-8 text-white max-w-[90vw] md:max-w-[1150px] mx-auto">
+        What touches your skin shapes how you <span className="italic text-white">perform and recover.</span>
       </h1>
-      <p className="premium-body text-white/80 mb-12 max-w-[340px] md:max-w-2xl mx-auto text-center">
+      <p className="premium-body text-white mb-12 max-w-[340px] md:max-w-2xl mx-auto text-center">
         Grounded in Nordic wellbeing.
       </p>
       <button 
@@ -147,7 +147,7 @@ const Hero = ({ onExplore }) => (
           onExplore();
           trackEvent('cta_click', { cta_location: 'hero', cta_label: 'discover' });
         }}
-        className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white/40 px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full font-sans"
+        className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.3em] font-bold border border-white px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 rounded-full font-sans text-white"
       >
         Discover
       </button>
