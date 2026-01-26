@@ -164,6 +164,11 @@ const PhilosophySection = ({ innerRef, onJoin }) => (
   <section ref={innerRef} className="py-24 md:py-40 bg-background relative overflow-hidden">
     <div className="section-fade-top" />
     <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-20 flex flex-col items-center">
+      {/* Section Header */}
+      <div className="max-w-4xl mb-24 flex flex-col items-center md:items-start text-center md:text-left space-y-6 mx-auto md:mx-0 w-full">
+        <SectionTitle>Our philosophy</SectionTitle>
+      </div>
+
       <div className="flex flex-col md:grid md:grid-cols-2 gap-16 md:gap-32 items-center mb-12 w-full">
         
         {/* Image Content - Position Left on Desktop (order-1) */}
